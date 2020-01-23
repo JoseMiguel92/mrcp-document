@@ -1,0 +1,44 @@
+% Chapter 5: Results
+
+\chapter{Resultados} % Main chapter title
+
+\label{Chapter5} % Reference
+
+%-------------------------------------------------------------------------------
+
+En este apartado se describen los diferentes recursos tanto hardware como software para la realización de este trabajo fin de grado, así como, a partir de estos, se han obtenido los resultados para su posterior análisis.
+
+\section{Recursos utilizados}
+A continuación se detallará la máquina  y software para el desarrollo y procesado de las instancias para la comprobación del algoritmo, y las instancias utilizadas que describen diferentes casos y situaciones reales.
+
+\subsection{Descripción de la máquina utilizada}
+Para la realización de las diversas pruebas y procesado de las instancias de este problema, se ha utilizado una máquina con las siguientes características:
+
+\begin{itemize}
+
+\item Procesador: Intel Core i5 2,7 GHz
+\item Memoria RAM: 8 GB 1867 Mhz DDR3
+\end{itemize}
+
+El desarrollo del código se ha realizado mediante el lenguaje de programación Python \footnote{https://www.python.org/}, en su versión 3.7.4, a través del IDE \footnote{Integrated Development Environment o entorno de desarrollo integrado.}, PyCharm \footnote{https://www.jetbrains.com/es-es/pycharm/} de JetBrains en su versión 2019.3.1.
+
+\subsection{Instancias utilizadas}
+Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado, estas, hacen referencia a diferentes conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos como precios del mercado de valores y turbinas de viento. A continuación se detallan los diferentes conjuntos:
+
+\begin{itemize}
+	
+	\item \textbf{Conjuntos de tipo A y B:} Estos conjuntos son instancias de grafos generadas mediante una distribución de probabilidad uniforme, variando entre los 100 y los 500 nodos, así como la densidad del mismo que varía entre 45,78 \% y 53,64 \%.
+	\item  \textbf{Conjunto de tipo C:} Los datos pertenecientes a las instancias de este tipo hacen referencia a datos de los precios del mercado de valores.
+	\item  \textbf{Conjunto de tipo D:} Las instancias de este conjunto son datos para la construcción de turbinas de viento, donde cada nodo representa una localización de estas turbinas y sus pesos son la media de la velocidad del viento y el coste de contrucción de una turbina en ese punto.
+	\item  \textbf{Conjunto de tipo E:} Estas instancias están extraídas del segundo y décimo DIMACS Implementation Challenge \footnote{http://dimacs.rutgers.edu/programs/challenge/}, donde cada nodo tiene un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 2}$. Adicionalmente se ha añadido un nodo más a cada instancia de este conjunto, el cual está conectado al resto de nodos de la misma, con un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 1}$, donde i es el número del nodo dentro de esa instancia.
+	\item  \textbf{Conjunto de tipo F:} Estas instancias son las mismas que en el conjunto E pero en este caso los pesos de cada nodo son $\mathrm{p_{i} = i}$ y $\mathrm{q_{i} = |V| - i + 1}$, donde i es el número del nodo dentro de esa instancia.
+	
+	
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+
+\section{Análisis de los resultados}
+Mostrar y comentar los resultados obtenidos.
+
+%-------------------------------------------------------------------------------
