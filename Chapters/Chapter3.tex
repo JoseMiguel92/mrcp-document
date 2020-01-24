@@ -5,12 +5,98 @@
 \label{Chapter3}
 
 %-------------------------------------------------------------------------------
+En este capítulo se describe el algoritmo utilizado para el desarrollo de este trabajo final de grado, exponiendo todas sus características.
 
-\section{GRASP\index{GRASP}}
+\section{Metaheurística}
+Que es la metaheuristica cuales hay y por que se ha usado este algoritmo.
+
+\subsection{GRASP\index{GRASP}}
 Definición de la metaheurística utilizada.
 
-\subsection{Fase constructiva}
+El pseudocódigo del algoritmo GRASP que se ha empleado para el desarrollo en este proyecto es el siguiente:
+
+\begin{algorithm}
+	\SetAlgoLined
+	$ v \gets rnd( V ) $ \\[0.2cm]
+	$ S \gets \{ v \} $ \\[0.2cm]
+	$ CL \gets \{u \in V : (u, v) \in E\} $ \\[0.2cm]
+	\While{$|CL| \not= 0$}{
+		$ \mathrm{g_{min}} \gets $ $ \smash{\displaystyle\min_{c \in CL}} \hspace{0.1cm} g(c) $ \\[0.2cm]
+		$ \mathrm{g_{max}} \gets $ $ \smash{\displaystyle\max_{c \in CL}} \hspace{0.1cm} g(c) $ \\[0.2cm]
+		$ \mu \gets  \mathrm{g_{max}} - \alpha ( \mathrm{g_{max}} - \mathrm{g_{min}} ) $ \\[0.2cm]
+		$ RCL \gets \{ c \in CL : g(c) \geq \mu \}  $ \\[0.2cm]
+		$ u \gets rnd (RCL) $ \\[0.2cm]
+		$ S \gets \cup \hspace{0.1cm} \{ u \}$ \\[0.2cm]
+		$ CL \gets CL \textbackslash \{ u \} \textbackslash \{ w : (u, w) \notin E \}$  \\[0.2cm]
+	}
+	\Return S
+	\caption{Pseudocódigo algoritmo GRASP.}
+\end{algorithm}
+
+Para los métodos con los que es posible obtener las soluciones en la fase constructiva se tiene el siguiente pseudocódigo:
+
+\begin{algorithm}
+	\SetAlgoLined
+	$ S \gets \emptyset $  \\[0.2cm]
+	$ Adyacentes \gets  SeleccionAdyacentes(nodo) $  \\[0.2cm]
+	\While{$|Adyacentes| \not= 0$}{
+		$ candidato \gets buscarMejor(adyacente) $  \\[0.2cm]
+		\If{formaClique(candidato)}{
+			$ Adyacentes \gets Adyacentes \cap SeleccionAdyacentes(candidato) $  \\[0.2cm]
+			$ S \gets S \cup \{candidato\} $  \\[0.2cm]
+		}\Else{
+			$ Adyacentes \gets Adyacentes \textbackslash \{candidato\} $
+		}
+	}
+	\Return S
+	\caption{Contructivo voráz}
+\end{algorithm}
+
+El cuál es común a ambos, solo se diferencian en como obtiene cada uno su mejor nodo a escoger para incluir en su solución, los cuales se pueden definir de la siguiente manera:
+
+
+\begin{enumerate}
+	\item
+	El constructivo 1 el cual obtiene una solución mediante un algoritmo voraz buscando el mayor ratio de cada nodo adyacente al de partida es el siguiente:
+	
+	\begin{algorithm}
+		$ ratio \gets -1 $ \\[0.2cm]
+		$ nodoElegido \gets NULO $ \\[0.2cm]
+		\For{nodo}{
+			$ ratioNodo \gets calcularRatio(nodo) $ \\[0.2cm]
+			\If{ratioNodo >\hspace{0.1cm}  ratio}{
+				$ ratio \gets ratioNodo $ \\[0.2cm]
+				$ nodoElegido \gets nodo $ \\[0.2cm]
+			}
+		}
+		\Return nodoElegido
+		\caption{Pseudocódigo método buscarMejor de tipo ratio.}
+	\end{algorithm}	
+	
+	\item
+	 El constructivo 2 el cual obtiene una solución mediante un algoritmo voraz buscando el mayor número de vecinos de cada nodo adyacente al de partida es el siguiente:
+	
+	\begin{algorithm}
+		$ vecinos \gets -1 $ \\[0.2cm]
+		$ nodoElegido \gets NULO $ \\[0.2cm]
+		\For{nodo}{
+			$ vecinosNodo \gets SeleccionAdyacentes(nodo) $ \\[0.2cm]
+			\If{$ |vecinosNodo| $ >\hspace{0.1cm}  vecinos}{
+				$ vecinos \gets |vecinosNodo|  $ \\[0.2cm]
+				$ nodoElegido \gets nodo $ \\[0.2cm]
+			}
+		}
+		\Return nodoElegido
+		\caption{Pseudocódigo método buscarMejor de tipo adyacentes.}
+	\end{algorithm}
+	
+\end{enumerate}
+
+\subsubsection{Fase constructiva}
 Definición de los constructivos.
+
+\subsubsection{Fase de búsqueda}
+Definición de la fase de búsqueda.
 
 
 %-------------------------------------------------------------------------------

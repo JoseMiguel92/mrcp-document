@@ -62,9 +62,17 @@ chapterinoneline, % Uncomment to place the chapter title next to the number on o
 \usepackage{listings} % Package to type bash commands
 
 \usepackage{imakeidx} % Package to make an index of words used in the papers
+
 \makeindex[program=makeindex,columns=2,intoc=true,options={-s index_style.ist}]
 
 \usepackage[hidelinks]{hyperref} % Used to hide the link frames
+
+\usepackage[ruled, vlined, spanish, onelanguage, linesnumbered]{algorithm2e} %for psuedo code
+\IncMargin{1.5em}
+\SetNlSty{texttt}{(}{)}
+
+
+\setcounter{secnumdepth}{4} % Depth of subsections
 
 %-------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -176,7 +184,9 @@ Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día 
 %-------------------------------------------------------------------------------
 
 \begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-\textbf{Ejemplo} & \textbf{A}a \textbf{B}b \textbf{C}c \\
+	
+\textbf{GRASP} & \textbf{G}reedy \textbf{R}andomized \textbf{A}daptive  \textbf{S}earch  \textbf{P}rocedure \\
+\textbf{IDE} & \textbf{I}ntegrated \textbf{D}evelopment \textbf{E}nvironment \\
 
 \end{abbreviations}
 
