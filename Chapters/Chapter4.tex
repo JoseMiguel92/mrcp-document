@@ -12,7 +12,55 @@ En este capítulo se describe el desarrollo completo del proyecto, desde el dise
 aaa
 
 \section{Implementación}
-bbbb
+La implementación de este proyecto se basa en la ejecución de un script\footnote{script} escrito en lenguaje Python el cual parte de una clase en la que se encuentra la siguiente sentencia de código:
+ \begin{lstlisting}[language=Python]
+ if__name__ == "__main__"
+ \end{lstlisting}
+ la cual posibilita la ejecución del script como aplicacion standalone\footnote{standalone} mediante el comando:
+  \begin{lstlisting}[language=bash]
+  python grasp_main.py
+ \end{lstlisting}
+ Este script, en adelante Grasp Main, tiene la configuración necesaria para ajustar el programa:
+ \begin{itemize}
+ 	\item Número de iteraciones a realizar por cada fichero.
+ 	\item Ruta donde se encuentran los ficheros de definición de los grafos a procesar.
+ 	\item Ruta de los ficheros de resultados generados por el programa.	
+ \end{itemize}
+
+Grasp Main se encarga de recorrer recursivamente los ficheros que se encuentran en la ruta de recursos definida y por cada uno de los ficheros encontrados crea un objeto de tipo Instance, añadiendo la información del grafo:
+ \begin{itemize}
+	\item Número de nodos.
+	\item Número de aristas.
+	\item Estructura de datos con los nodos del grafo.
+\end{itemize}
+
+Esta estructura de datos contiene tantos objetos de tipo Node como tengo el grafo, cada uno de ellos con la siguiente información:
+ \begin{itemize}
+	\item Identificador del nodo.
+	\item Valor del peso p.
+	\item Valor de peso q.
+	\item Grado del nodo.
+	\item Estructura de datos con las relaciones de este nodo con otros nodos del grafo.
+\end{itemize}
+
+Tras terminar esta operación, realiza el procesado un número N de veces, según se haya definido previamente en la configuración de la aplicación en Grasp Main, y por cada tipo de constructivo de los que dispone la aplicación, en este caso, constructivo ratio y constructivo adyacente, los cuales serán explicados más adelante. 
+La implementación del algoritmo GRASP se encuentra en la clase SolutionGrasp y contiene los métodos necesarios para la obtención mediante el algoritmo de una solución, partiendo de la función $find\_grasp\_solutio$n, la cual inicializa los siguientes datos:
+\begin{itemize}
+	\item vertex, el cuál es obtenido de manera aleatoria entre todos los nodos del grafo.
+	\item solution, conjunto inicializado con el vértice obtenido anteriormente.
+	\item cl, lista de candidatos posibles para encontrar una solución.
+\end{itemize}
+
+//TODO ¿se debe explicar cada método que forma parte de esta funcion?
+
+Esta función se apoya en otra auxiliar, nombrada como $ find\_solution\_aux $, la cuál implementa el algoritmo utilizado, de esta manera se desacopla el tipo de algoritmo de la búsqueda de una solución, dando la posibilidad a un cambio posterior si fuera necesario. Dicha función, procesará los nodos del grafo tal como se describió en el capítulo anterior. Para la fase constructiva del algoritmo, según el tipo elegido en la configuración inicial, se creará un objeto del contructivo específico, SolutionGreedyRatio o SolutionGreedyAdjacent. Estos heredan de la clase de la clase abstracta\footnote{clase abstracta} SolutionGreedy, la cuál tiene la información compartida por ambos tipos, y delega la implementación de la función $find\_better$ en cada una de las clases específicas, quienes mediante un algoritmo de tipo voráz buscan una solución factible en un tiempo muy reducido.
+
+Para mantener cierta información en un único lugar se ha implementado la clase GraphUtils, la cuál contiene información necesaria para los grafos y métodos útiles para usarse durante el procesado de los ficheros.
+
+Para probar las diferentes funciones del proyecto se han escrito casos de prueba mediante la librería de Python unittest\footnote{unittest}, para conseguir un código tolerable a posibles fallos y mantenible.
+
+//TODO Explicación del proceso, partiendo de la lectura de fichero, luego crear solucion voraz
+
 
 \section{Metadología empleada}
 Para el desarrollo de este proyecto se ha elegido por una metodología ágil ya que como afirma Joaquín Alviz (2016) \cite{Reference1} "para poder contar con versiones del producto funcional que se puedan mostrar al cliente conforme se va mejorando y completando, es necesario contar con un enfoque ágil, flexible y con una retroalimentación constante", por esto para la elaboración de este trabajo final de grado se ha optado por seguir una metodología ágil de tipo iterativa e incremental, lo que permite evolucionar el proyecto progresivamente e ir adaptando los requisitos del cliente, en este caso los tutores del proyecto, en el menor tiempo posible, mejorando así la calidad del producto final con el menor esfuerzo.
