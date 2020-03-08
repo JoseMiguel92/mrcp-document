@@ -43,8 +43,9 @@ onehalfspacing, % Single line spacing, alternatives: onehalfspacing or doublespa
 parskip, % Uncomment to add space between paragraphs
 %nohyperref, % Uncomment to not load the hyperref package
 headsepline, % Uncomment to get a line under the header
-chapterinoneline, % Uncomment to place the chapter title next to the number on one line
+%chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
+openany % Uncomment to delete white page after introduction chapter
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
@@ -68,6 +69,14 @@ chapterinoneline, % Uncomment to place the chapter title next to the number on o
 \usepackage[hidelinks]{hyperref} % Used to hide the link frames
 
 \usepackage[ruled, vlined, spanish, onelanguage, linesnumbered]{algorithm2e} %for psuedo code
+
+\usepackage{rotating} 
+\usepackage{schemata}
+\newcommand\diagram[2]{\schema{\schemabox{#1}}{\schemabox{#2}}}
+
+\usepackage{graphicx}
+\usepackage{float}
+
 \IncMargin{1.5em}
 \SetNlSty{texttt}{(}{)}
 
