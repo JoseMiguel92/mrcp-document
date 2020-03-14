@@ -7,74 +7,15 @@
 %-------------------------------------------------------------------------------
 En este capítulo se describe el algoritmo metaheurístico utilizado, exponiendo todas sus características para la obtención de una solución al problema.
 
-\section{Heurística y Metaheurística}
-Se define heurística, según el Diccionario de la Real Academia de la Lengua Española \cite{rae-heuristica}, como ``técnica de la indagación y del descubrimiento'' y ``en algunas ciencias, manera de buscar la solución de un problema mediante métodos no rigurosos, como por tanteo, reglas empíricas, etc.''.
-
-Aplicándolo a temas científicos se define como el proceso de creación de medios, estrategias y principios para alcanzar un objetivo eficaz al problema dado \cite{conceptodef-heuristica}, y en relación a esto, el término, fue acuñado por George Polya en su libro ``How to Solve It'' \cite{gpolya-book-1}, más tarde traducido a ``Cómo plantear y resolver problemas'' \cite{gpolya-book-2}.
-
-Añadiendo al término heurística el prefijo ``meta'' procedente del griego, que significa ``más allá'' o ``nivel superior'', se puede definir metaheurística como el conjunto de procedimientos heurísticos combinados para obtener una solución, aunque no exacta si eficiente, a un problema que no tiene un algoritmo heurístico específico o su aplicación es ineficiente \cite{wiki-metaheuristica}. Este término lo acuño Fred Glover en sus trabajos sobre búsqueda tabú en 1986 \cite{fred-glover}.
-
-Existen un gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una de ellas basada en el número de soluciones.\\
-\begin{figure}[H]
-	\centering
-\diagram{Trayectoriales}{
-	- \diagram{Búsqueda\\local}{
-		- Con memoria: Búsqueda Tabú (TS)\\ 
-		- \diagram{Estocástica}{
-			- Búsqueda local guiada (GLS) \\ 
-			- Métodos ruidosos (NM) \\ 
-			- Recocido simulado (SA)\\
-			- Métodos de aceptación de\\ umbral (TAM)\\
-		}\\
-		- \diagram{Por \\entornos}{
-			- Búsqueda de entorno variable (VNS)\\
-			- Optimización parcial bajo condiciones\\ especiales de intensificación(POPMUSIC)\\
-		}\\
-	}\\
-	- \diagram{Búsqueda\\iterativa}{
-		- Búsqueda local iterativa (ILS)\\
-		- Búsqueda por entorno adaptativo borroso (FANS\\
-	}\\
-	- \diagram{Búsqueda\\multi-arranque}{
-		- Concentración heurística (HC)\\
-		- (AMS)\\
-		- Métodos multi-arranque (MSM)\\
-		- Procedimientos de búsqueda voráz,\\ aleatorizada y adaptativa (GRASP)\\
-	}\\
-}
-\diagram{Poblacionales}{
-	- \diagram{Combinación\\de soluciones}{
-		- \diagram{Inspiración\\evolutiva}{
-			- Algoritmos culturales (CA)\\
-			- Algoritmos genéticos (GA)\\
-			- Algoritmos meméticos (MA)\\
-		}\\
-		- \diagram{Sin inspiración}{
-			- Re-encadenamiento de\\ caminos (PR)\\
-			- Búsqueda dispersa (SS)\\
-		}\\
-	}\\
-	- \diagram{Movimientos}{
-		- Optimización por colonias de hormigas (ACO)\\
-		- Equipos asíncronos (AT)\\
-		- Algoritmos de estimación de distribución (EDA)\\
-		- Inteligencia de enjambre (SI)\\
-	}\\
-}
-	\caption{Clasificación de metaheurísticas}
-	\label{fig:clasif-metahs}
-\end{figure}
-
-Dos conceptos a tener en cuenta en algoritmo metaheurístico son la intensificación o explotación en una región, de modo que una alta intensificación hará que el algoritmo realice una búsqueda más exhaustiva en esa región, y la diversificación o exploración de nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
-
 \section{Metaheurística GRASP\index{GRASP}}
-El acrónimo GRASP se forma a partir de su siglas en inglés Greedy Randomized Adaptative Search Procedure o que en castellano es Procedimiento de búsqueda voráz aleatorizado y adaptativo, el término fue introducido por primera vez por Feo y Resende en 1995 en su artículo con el mismo nombre \cite{grasp-feo-resende}.
+El acrónimo GRASP se forma a partir de sus siglas en inglés Greedy Randomized Adaptative Search Procedure o que en castellano es Procedimiento de búsqueda voráz aleatorizado y adaptativo, el término fue introducido por primera vez por Feo y Resende en 1995 en su artículo con el mismo nombre \cite{grasp-feo-resende}.
 
 Este algoritmo se basa en el multi-arranque, dónde cada arranque es una iteración de un procedimiento que está constituido por dos partes bien diferenciadas, la fase constructiva, en la que se obtiene una solución de buena calidad, y una fase de mejora, en la que partiendo de la solución obtenida en la fase anterior, se intenta mejorar localmente \cite{libro-metaheuristicas}. 
 En \cite{grasp-flightrecoveryproblem} \cite{grasp-parallel} \cite{grasp-weapon} \cite{grasp-empaquetado} \cite{grasp-ruta} \cite{grasp-vertex} se pueden encontrar diversos documentos en los que se tratan problemas aplicando la metaheurística GRASP.
 
-En el algoritmo \ref{alg:grasp} se muestra el pseudocódigo de la metaheurística GRASP que se ha empleado para el desarrollo y obtención de una solución para este problema, dicho algoritmo se puede explicar aplicándolo al problema tratado de la siguiente manera:\\
-Partiendo de un grafo $G=(V, E)$ donde $V$ son los vértices o nodos del grafo, y $E$ las aristas que unen estos nodos. Se toma un vértice $v$ aleatorio de entre los vértices del grafo. $v$ se incluye en la solución $S$ ya que cumple con las restricciones del problema, descritas en la sección XXX, a partir de $v$ se construye la lista de candidatos $CL$, definida como todos los nodos adyacentes a $v$ que forman parte de la lista de nodos del grafo de partida. A partir de este momento se toma un elemento de la lista de candidatos y con este se obtiene, mediante una función voráz el nodo con valor máximo y mínimo de esta función, con estos valores y un valor dado $\alpha$, que oscilará entre $0$ y $1$ y marca la aleatoriedad de la función de manera que si $\alpha$ es igual a 1 la función será menos aleatoria y se obtendría solo el mejor candidato, mientras que si es 0 la función es más aleatoria y se obtendrán todos los candidatos posibles, teniendo esto en cuenta, se obtiene el valor de $\mu$, el cuál pondrá el límite para la lista de candidatos restringida $RCL$, obtenida mediante la lista de candidatos $CL$ ordenada de mayor valor a menor valor tomando los primeros valores hasta alcanzar el valor de $\mu$. Tomando esta lista, se elegirá aleatoriamente un nodo de la misma, $u$, el cuál se añadirá a la lista solución $S$ y eliminándolo de la lista de candidatos junto con los nodos de la lista de candidatos que no son adyacentes a ese nodo. Este procedimiento será repetido hasta que la lista de candidatos este vacía, obteniéndose en ese momento la lista $S$ que conformará una solución.
+En el algoritmo \ref{alg:grasp} se muestra el pseudocódigo de la metaheurística GRASP que se ha empleado para el desarrollo y obtención de una solución para este problema. Dicho algoritmo se puede explicar, aplicándolo al problema tratado, de la siguiente manera:\\
+
+Partiendo de un grafo $G=(V, E)$ donde $V$ son los vértices o nodos del grafo, y $E$ las aristas que unen estos nodos. Se toma un vértice $v$ aleatorio de entre los vértices del grafo. $v$ se incluye en la solución $S$ ya que cumple con las restricciones del problema, descritas en la sección \ref{intro-problema}, a partir de $v$ se construye la lista de candidatos $CL$, definida como todos los nodos adyacentes a $v$ que forman parte de la lista de nodos del grafo de partida. A partir de este momento se toma un elemento de la lista de candidatos y con este se obtiene, mediante una función voráz el nodo con valor máximo y mínimo de esta función, con estos valores y un valor dado $\alpha$, que oscilará entre $0$ y $1$ y marca la aleatoriedad de la función de manera que si $\alpha$ es igual a 1 la función será menos aleatoria y se obtendría solo el mejor candidato, mientras que si es 0 la función es más aleatoria y se obtendrán todos los candidatos posibles, teniendo esto en cuenta, se obtiene el valor de $\mu$, el cuál pondrá el límite para la lista de candidatos restringida $RCL$, obtenida mediante la lista de candidatos $CL$ ordenada de mayor valor a menor valor tomando los primeros valores hasta alcanzar el valor de $\mu$. Tomando esta lista, se elegirá de manera aleatoria un nodo de la misma, $u$, el cuál se añadirá a la lista solución $S$ y eliminándolo de la lista de candidatos junto con los nodos de la lista de candidatos que no son adyacentes a ese nodo. Este procedimiento será repetido hasta que la lista de candidatos este vacía, obteniéndose en ese momento la lista $S$ que conformará una solución.
 
 \begin{algorithm}
 	\SetAlgoLined
