@@ -80,6 +80,9 @@ openany % Uncomment to delete white page after introduction chapter
 \usepackage{amssymb, amsmath, amsbsy} % simbolos
 \usepackage{upgreek} % para poner letras griegas sin cursiva
 
+\usepackage[automake]{glossaries} %Load glossaries package
+\makeglossaries
+
 \IncMargin{1.5em}
 \SetNlSty{texttt}{(}{)}
 
@@ -195,12 +198,37 @@ Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día 
 %	ABBREVIATIONS
 %-------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-	
-\textbf{GRASP} & \textbf{G}reedy \textbf{R}andomized \textbf{A}daptive  \textbf{S}earch  \textbf{P}rocedure \\
-\textbf{IDE} & \textbf{I}ntegrated \textbf{D}evelopment \textbf{E}nvironment \\
+% Acronym definitions
+\newglossaryentry{MRCP}{name={MRCP},description={Maximum Ratio Clique Problem}}
+\newglossaryentry{MCP}{name={MCP},description={Maximum Clique Problem}}
+\newglossaryentry{MWCP}{name={MWCP},description={Maximum Weight Clique Problem}}
+\newglossaryentry{GRASP}{name={GRASP},description={Greedy Randomized Adaptive Search Procedure}}
+\newglossaryentry{IDE}{name={IDE},description={Integrated Development Environment}}
+\newglossaryentry{TS}{name={TS},description={Tabu Search}}
+\newglossaryentry{GLS}{name={GLS},description={Guided Local Search}}
+\newglossaryentry{NM}{name={NM},description={Noising Methods}}
+\newglossaryentry{SA}{name={SA},description={Simulated Annealing}}
+\newglossaryentry{TAM}{name={TAM},description={Threshold Accepting Methods}}
+\newglossaryentry{VNS}{name={VNS},description={Variable Neighborhood Search}}
+\newglossaryentry{POPMUSIC}{name={POPMUSIC},description={Partial OPtimization Metaheuristic Under Special Intensification Conditions}}
+\newglossaryentry{ILS}{name={ILS},description={Iterated Local Search}}
+\newglossaryentry{FANS}{name={FANS},description={Fuzzy Adaptive Neighborhood Search}}
+\newglossaryentry{HC}{name={HC},description={Heuristic Concentration}}
+\newglossaryentry{AMS}{name={AMS},description={Adaptive Multi-Start}}
+\newglossaryentry{MSM}{name={MSM},description={Multi-Start Methods}}
+\newglossaryentry{CA}{name={CA},description={Cultural Algorithms}}
+\newglossaryentry{GA}{name={GA},description={Genetic Algorithms}}
+\newglossaryentry{MA}{name={MA},description={Memetic Algorithms}}
+\newglossaryentry{PR}{name={PR},description={Path Relinking}}
+\newglossaryentry{SS}{name={SS},description={Scatter Search}}
+\newglossaryentry{ACO}{name={ACO},description={Ant Colony Optimization}}
+\newglossaryentry{AT}{name={AT},description={Asynchronous Teams}}
+\newglossaryentry{EDA}{name={EDA},description={Estimation Distribution Algorithms)}}
+\newglossaryentry{SI}{name={SI},description={Swarm Intelligence}}
 
-\end{abbreviations}
+%Print the glossary
+\printglossary[title={Listado de abreviaciones}] %Generate List of Abbreviations
+
 
 %-------------------------------------------------------------------------------
 %	DEDICATION
