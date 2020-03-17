@@ -206,15 +206,15 @@ El problema del clique de ratio máximo ha sido catalogado como un problema NP-d
 aaaaa
 
 \section{Estado del arte}
-El análisis sobre el estado del arte que se ha realizado sobre el problema del clique de ratio máximo y todo lo que rodea al mismo 
+El análisis sobre el estado del arte que se ha realizado sobre el problema del clique de ratio máximo y todo lo que rodea al mismo ha sido documentado mediante la siguiente literatura, si bien es cierto que no existe demasiada al respecto ya que se trata de un problema poco estudiado en comparación con el clásico problema de búsqueda de la clique máxima, \cite{mcp-batsyn}, \cite{mcp-ryp}, \cite{mcp-neuro}, o \cite{mcp-ants} donde se muestra un algoritmo \gls{ACO} con un optimizador local K-opt.
 
-Moeini dca
+También se ha estudiado en mayor medida el problema de la búsqueda del clique de peso máximo, más cercano al tratado en este trabajo final de grado, como se puede observar en \cite{mwcp-ls} se implementan sendos algoritmos de búsqueda local llamados SCCWalk y SCCWalk4L, \cite{mwcp-ml} en el que se hace uso del muestreo estocástico y el machine-learning para abordar el problema eliminando variables de decisión que no formarían parte de una solución óptima.
 
-\cite{mrcp-ants}
+En el documento desarrollado por Samyukta Sethuraman  y Sergiy Butenko \cite{mrcp-Sethuraman:2015} se trata el problema desde tres puntos de vista, mediante el IBM CPLEX para resolver el problema de manera lineal y la aplicación de la búsqueda binaria y el método de Newton.
 
-\cite{mrcp-Sethuraman:2015}
+En \cite{mrcp-moeni} se trata el problema basándose en el enfoque eficiente que dan las funciones de diferencia de convexos (DC) y sus algoritmos (DCA) el cuál provee resultados competitivos, a su vez, introducen las desigualdades válidas que ayudan a mejorar el tiempo computacional en la obtención de resultados de calidad al problema.
 
-Cabe destacar entre todos los trabajos realizados sobre el problema del clique de ratio máximo el de Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283} el cuál se ha tomado como referencia para realizar este trabajo final de grado.
+Cabe destacar entre todos los trabajos realizados sobre el problema del clique de ratio máximo el de Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283} el cuál se ha tomado como referencia para realizar este trabajo final de grado, en este artículo, los autores parten de un punto de vista multi-arranque \gls{MSM} añadiendo una búsqueda de vecindario variable \gls{VNS}, lo que permite obtener soluciones de gran calidad y un tiempo de computo menor.
 
 %-------------------------------------------------------------------------------
 

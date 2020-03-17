@@ -1,12 +1,26 @@
 %% This BibTeX bibliography file was created using BibDesk.
 %% https://bibdesk.sourceforge.io/
 
-%% Created for Jose Miguel Garcia at 2020-03-13 19:43:31 +0100 
+%% Created for Jose Miguel Garcia at 2020-03-17 16:55:00 +0100 
 
 
 %% Saved with string encoding Unicode (UTF-8) 
 
 
+
+@inproceedings{mrcp-moeni,
+	Abstract = {In this paper, we are interested in studying the maximum ratio clique problem (MRCP) that is a variant of the classical maximum weight clique problem. For a given graph, we suppose that each vertex of the graph is weighted by a pair of rational numbers. The objective of MRCP consists in finding a maximal clique with the largest ratio between two sets of weights that are assigned to its vertices. It has been proven that the decision version of this problem is NP-complete and it is hard to solve MRCP for large instances. Hence, this paper looks for introducing an efficient approach based on Difference of Convex functions (DC) programming and DC Algorithm (DCA) for solving MRCP. Then, we verify the performance of the proposed method. For this purpose, we compare the solutions of DCA with the previously published results. As a second objective of this paper, we identify some valid inequalities and evaluate empirically their influence in solving MRCP. According to the numerical experiments, DCA provides promising and competitive results. Furthermore, the introduction of the valid inequalities improves the computational time of the classical approaches.},
+	Address = {Cham},
+	Author = {Moeini, Mahdi},
+	Booktitle = {Modelling, Computation and Optimization in Information Systems and Management Sciences},
+	Date-Added = {2020-03-17 16:54:32 +0100},
+	Date-Modified = {2020-03-17 16:54:53 +0100},
+	Editor = {Le Thi, Hoai An and Pham Dinh, Tao and Nguyen, Ngoc Thanh},
+	Isbn = {978-3-319-18161-5},
+	Pages = {215--227},
+	Publisher = {Springer International Publishing},
+	Title = {The Maximum Ratio Clique Problem: A Continuous Optimization Approach and Some New Results},
+	Year = {2015}}
 
 @article{mrcp-Sethuraman:2015,
 	Abstract = {This paper introduces a fractional version of the classical maximum weight clique problem, the maximum ratio clique problem, which is to find a maximal clique that has the largest ratio of benefit and cost weights associated with the clique's vertices. NP-completeness of the decision version of the problem is established, and three solution methods are proposed. The results of numerical experiments with standard graph instances, as well as with real-life instances arising in finance and energy systems, are reported.},
@@ -211,7 +225,7 @@
 	Title = {GRASP para el problema de ruta de veh{\'\i}culos},
 	Year = {2020}}
 
-@article{mrcp-ants,
+@article{mcp-ants,
 	Author = {Ponce, Julio and Ponce de Leon Senti, Eunice and Padilla, Alejandro and Padilla, Felipe and Ochoa-Zezzatti, Carlos},
 	Month = {01},
 	Title = {Algoritmo de Colonia de Hormigas para el Problema del Clique M{\'a}ximo con un Optimizador Local K-opt},
@@ -222,7 +236,7 @@
 	Author = {Dominik Goeke and Mahdi Moeini and David Poganiuch},
 	Doi = {https://doi.org/10.1016/j.cor.2017.01.010},
 	Issn = {0305-0548},
-	Journal = {Computers and Operations Research},
+	Journal = {Computers y Operations Research},
 	Keywords = {Variable Neighborhood Search, Heuristic, Metaheuristic, Maximum ratio clique problem, Maximal clique},
 	Pages = {283 - 291},
 	Title = {A Variable Neighborhood Search heuristic for the maximum ratio clique problem},
@@ -231,3 +245,74 @@
 	Year = {2017},
 	Bdsk-Url-1 = {http://www.sciencedirect.com/science/article/pii/S0305054817300102},
 	Bdsk-Url-2 = {https://doi.org/10.1016/j.cor.2017.01.010}}
+
+@article{mcp-batsyn,
+	issn = {1382-6905},
+	abstract = {In this paper we present improvements to one of the most recent and fastest branch-and-bound algorithm for the maximum clique problem—MCS algorithm by Tomita et al. (Proceedings of the 4th international conference on Algorithms and Computation, WALCOM’10, pp. 191–203, 2010). The suggested improvements include: incorporating of an efficient heuristic returning a high-quality initial solution, fast detection of clique vertices in a set of candidates, better initial colouring, and avoiding dynamic memory allocation. Our computational study shows some impressive results, mainly we have solved p_hat1000-3 benchmark instance which is intractable for MCS algorithm and got speedups of 7, 3000, and 13000 times for gen400_p0.9_55, gen400_p0.9_65, and gen400_p0.9_75 instances correspondingly.},
+	journal = {Journal of Combinatorial Optimization},
+	pages = {397--416},
+	volume = {27},
+	publisher = {Springer US},
+	number = {2},
+	year = {2014},
+	title = {Improvements to MCS algorithm for the maximum clique problem},
+	language = {eng},
+	address = {Boston},
+	author = {Batsyn, Mikhail and Goldengorin, Boris and Maslov, Evgeny and Pardalos, Panos},
+	keywords = {Maximum clique problem ; Branch-and-bound algorithm ; Heuristic solution ; Graph colouring},
+}
+
+@inproceedings{mcp-ryp,
+	issn = {03029743},
+	journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+	pages = {275--280},
+	volume = {8994},
+	publisher = {Springer Verlag},
+	isbn = {9783319190839},
+	year = {2015},
+	title = {Reusing the same coloring in the child nodes of the search tree for the maximum clique problem},
+	copyright = {Copyright 2015 Elsevier B.V., All rights reserved.},
+	author = {Nikolaev, A. and Batsyn, M. and San Segundo, P.},
+	keywords = {Branch-and-Bound Algorithm ; Maximum Clique Problem ; Reusing Coloring},
+}
+
+@article{mcp-neuro,
+	issn = {0925-2312},
+	abstract = {<p>In this paper, we analyze the formula of weights definition in the discrete competitive Hopfield network (DCHOM) and point out its flaw when using it to solve some special instances of maximum clique problem (MCP). Based on the analysis, we propose an improved competitive Hopfield network algorithm (ICHN). In ICHN, we introduce a flexible weight definition method which excites the competitive dynamics, and we also present an initial values setting strategy which efficiently increases the probability of finding optimal solutions. Furthermore, an inhibitive competitive activation mechanism is introduced to form a new input updating rule which reduces significantly the number of neurons with an intermediate level of activations. Our algorithm effectively overcomes the flaw of the DCHOM, and exhibits powerful solving ability for the MCP. Experiments on the benchmark problems and practical applications verify the validity of our algorithm.</p>},
+	journal = {Neurocomputing},
+	pages = {28--35},
+	volume = {130},
+	publisher = {Elsevier B.V},
+	year = {2014},
+	title = {An improved competitive Hopfield network with inhibitive competitive activation mechanism for maximum clique problem},
+	language = {eng},
+	author = {Yang, Gang and Yang, Nan and Yi, Junyan and Tang, Zheng},
+	keywords = {Competitive Hopfield Network ; Maximum Clique Problem ; Inhibitive Competitive Mechanism ; Community Detection ; Competitive Hopfield Network ; Maximum Clique Problem ; Inhibitive Competitive Mechanism ; Community Detection ; Computer Science},
+}
+
+@article{mwcp-ls,
+	title = "SCCWalk: An efficient local search algorithm and its improvements for maximum weight clique problem",
+	journal = "Artificial Intelligence",
+	volume = "280",
+	pages = "103230",
+	year = "2020",
+	issn = "0004-3702",
+	doi = "https://doi.org/10.1016/j.artint.2019.103230",
+	url = "http://www.sciencedirect.com/science/article/pii/S0004370219302164",
+	author = "Yiyuan Wang and Shaowei Cai and Jiejiang Chen and Minghao Yin",
+	keywords = "The maximum weight clique problem, Local search, Strong configuration checking, Walk perturbation procedure, Massive graph",
+	abstract = "The maximum weight clique problem (MWCP) is an important generalization of the maximum clique problem with wide applications. In this study, we develop two efficient local search algorithms for MWCP, namely SCCWalk and SCCWalk4L, where SCCWalk4L is improved from SCCWalk for large graphs. There are two main ideas in SCCWalk, including strong configuration checking (SCC) and walk perturbation. SCC is a new variant of a powerful strategy called configuration checking for local search. The walk perturbation procedure is used to lead the algorithm to leave the current area and come into a new area of feasible solution space. Moreover, to improve the performance on massive graphs, we apply a low-complexity heuristic called best from multiple selection to select the swapping vertex pair quickly and effectively, resulting in the SCCWalk4L algorithm. In addition, SCCWalk4L uses two recent reduction rules to decrease the scale of massive graphs. We carry out experiments to evaluate our algorithms on several popular benchmarks, which are divided into two groups, including classical benchmarks of small graphs namely DIMACS, BHOSLIB, winner determination problem, and graphs derived from clustering aggregation, as well as massive graphs, including a suite of massive real-world graphs and large-scale FRB graphs. Experiments show that, compared to state-of-the-art heuristic algorithms and exact algorithm, the proposed algorithms perform better on classical benchmarks, and obtain the best solutions for most massive graphs."
+}
+
+@ARTICLE{mwcp-ml,
+	author={Y. {Sun} and X. {Li} and A. {Ernst}},
+	journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+	title={Using Statistical Measures and Machine Learning for Graph Reduction to Solve Maximum Weight Clique Problems},
+	year={2019},
+	volume={},
+	number={},
+	pages={1-1},
+	keywords={Machine learning;Optimization;Machine learning algorithms;Search problems;Heuristic algorithms;Atmospheric measurements;Particle measurements;Combinatorial optimization;machine learning;data mining;statistics;problem reduction},
+	doi={10.1109/TPAMI.2019.2954827},
+	ISSN={1939-3539},
+	month={},}
