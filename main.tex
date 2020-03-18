@@ -45,7 +45,7 @@ parskip, % Uncomment to add space between paragraphs
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
-openany % Uncomment to delete white page after introduction chapter
+%openany % Uncomment to delete white page after introduction chapter
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
@@ -165,6 +165,19 @@ openany % Uncomment to delete white page after introduction chapter
 \end{titlepage}
 
 %-------------------------------------------------------------------------------
+%	DEDICATION
+%-------------------------------------------------------------------------------
+
+\dedicatory{
+	\begin{flushright}
+		\normalsize
+		<<Victory is always possible for the person who refuses to stop fighting>>,\\
+		Napoleon Hill
+	\end{flushright}
+}
+
+
+%-------------------------------------------------------------------------------
 %	ABSTRACT PAGE
 %-------------------------------------------------------------------------------
 
@@ -179,7 +192,7 @@ TODO
 
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-Todo este trabajo no habría sido posible sin mi familia, sin su apoyo y cariño, en especial a Rebeca Muñoz, la cual ha sido mi compañera de viaje y la luz que me ilumina.
+Todo este trabajo no habría sido posible sin mi familia, sin su apoyo y cariño, en especial a Rebeca, la cual ha sido mi compañera de viaje y la luz que me ilumina.
 
 Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día en clase, y a mis tutores, Jesús y Alfonso, por darme la oportunidad de realizar este trabajo y de los que he aprendido mucho.
 \end{acknowledgements}
@@ -228,13 +241,6 @@ Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día 
 
 %Print the glossary
 \printglossary[title={Listado de abreviaciones}] %Generate List of Abbreviations
-
-
-%-------------------------------------------------------------------------------
-%	DEDICATION
-%-------------------------------------------------------------------------------
-
-%\dedicatory{\ldots}
 
 %-------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS

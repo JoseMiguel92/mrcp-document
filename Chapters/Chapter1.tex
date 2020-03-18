@@ -28,6 +28,51 @@ La memoria de este trabajo final de grado se estructura de la siguiente manera:
 	\item Capítulo 6, en este capítulo se muestran las conclusiones finales obtenidas durante todo este trabajo final de grado.
 \end{itemize}
 
+\section{Motivación del problema}
+
+En la actualidad, los grafos se han convertido en una pieza fundamental en la vida cotidiana de las personas, desde conocidas redes sociales como Twitter o Facebook \cite{api-graph}, figuras \ref{fig:twitter-graph} y \ref{fig:facebook-graph}
+ , pasando por las telecomunicaciones, figura \ref{fig:teleco-graph}, redes de metro, figura \ref{fig:metro-graph}, se ha simplificado para no contener todas las estaciones, hasta llegar a las simples moléculas, figura \ref{fig:molecula-graph}, pues si hay algo que todas estas cosas tienen en común, son los grafos, las conexiones entre nodos por una u otra razón, desde aficiones, hasta enlaces químicos \cite{grafo-molecula}, y encontrar bajo cierto criterio un subconjunto en los miles de millones de nodos y conexiones posibles que estos albergan es todo un reto, sin duda, y es más, realizarlo de una manera eficiente y en el menor tiempo posible, es un reto aún mayor.
+ 
+ \begin{figure}[H]
+	\centering
+	\includegraphics{Figures/twitter-graph.pdf}
+	\caption{Grafo de un tweet en Twitter.}
+	\label{fig:twitter-graph}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics{Figures/facebook-graph.pdf}
+	\caption{Grafo relaciones en Facebook.}
+	\label{fig:facebook-graph}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics{Figures/metro-graph.pdf}
+	\caption{Grafo sección del metro de Madrid.}
+	\label{fig:metro-graph}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{Figures/molecula-graph.pdf}
+	\caption{Representación de moléculas como grafos.\\ \scriptsize Fuente: https://www.blopig.com/blog/2019/01/graph-based-methods-for-cheminformatics}
+	\label{fig:molecula-graph}
+\end{figure}
+
+ \begin{figure}[H]
+	\centering
+	\includegraphics{Figures/teleco-graph.pdf}
+	\caption{Grafo de telecomunicaciones.}
+	\label{fig:teleco-graph}
+\end{figure}
+
+Muchas son las aplicaciones que se les puede dar a los grafos y a la información que se obtiene de ellos, como nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis de datos referentes al mercado busátil \cite{market-data} para conocer nuevas formas de predicción de exito en inversiones \cite{vid-graf-ai}, y hacer un uso adecuado y responsable de los mismos es una gran tarea.
+
+Por todo esto, es muy importante tratar los datos y sus relaciones de la manera mas eficiente posible, por lo que se han creados base de datos orientadas a grafos como es el caso de Neo4j \footnote{https://neo4j.com/} para tal efecto, con el fin de entender las relaciones y asi poder hallar nuevas técnicas y posibilidades para afrontar problemas y resolverlos más ágilmente.
+
+
 \section{Conceptos previos}
 Para comprender mejor todas las explicaciones que se van a exponer a lo largo de toda esta memoria, se van a describir algunos conceptos a continuación.
 
@@ -149,7 +194,7 @@ donde $\omega$ denota el número de vértices del clique, su cardinalidad.
 	\label{fig:max-clique}
 \end{figure}
 
-\section{Definición y motivación del problema}
+\section{Definición del problema}
 
 \subsection{Problema del clique de ratio máximo}
 \label{intro-problema}
@@ -200,10 +245,6 @@ El problema del clique de ratio máximo ha sido catalogado como un problema NP-d
 	\caption{Diagrama de problemas Np y NP-difícil.}
 	\label{fig:np-dificil}
 \end{figure}
-
-\subsection{Motivación del problema}
-
-aaaaa
 
 \section{Estado del arte}
 El análisis sobre el estado del arte que se ha realizado sobre el problema del clique de ratio máximo y todo lo que rodea al mismo ha sido documentado mediante la siguiente literatura, si bien es cierto que no existe demasiada al respecto ya que se trata de un problema poco estudiado en comparación con el clásico problema de búsqueda de la clique máxima, \cite{mcp-batsyn}, \cite{mcp-ryp}, \cite{mcp-neuro}, o \cite{mcp-ants} donde se muestra un algoritmo \gls{ACO} con un optimizador local K-opt.
