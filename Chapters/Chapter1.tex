@@ -57,9 +57,11 @@ En la actualidad, los grafos se han convertido en una pieza fundamental en la vi
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{Figures/molecula-graph.pdf}
-	\caption{Representación de moléculas como grafos.\\ \scriptsize Fuente: https://www.blopig.com/blog/2019/01/graph-based-methods-for-cheminformatics}
+	\caption{Representación de moléculas como grafos.}
+	\scriptsize Fuente: https://www.blopig.com/blog/2019/01/graph-based-methods-for-cheminformatics
 	\label{fig:molecula-graph}
 \end{figure}
+
 
  \begin{figure}[H]
 	\centering
@@ -77,9 +79,15 @@ Por todo esto, es muy importante tratar los datos y sus relaciones de la manera 
 Para comprender mejor todas las explicaciones que se van a exponer a lo largo de toda esta memoria, se van a describir algunos conceptos a continuación.
 
 \subsection{Optimización combinatoria}
-aaa
+La optimización combinatoria es el área dentro de las matemáticas aplicadas que se encarga de maximizar o minimizar una función en un espacio de soluciones, el cuál debe ser finito. En la actualidad es un campo con un gran crecimiento ya que ``muchos de los problemas de la vida real pueden ser formulados mediante optimización combinatoria'' \cite{opt-comb-rg}.
+Los problemas que forman parte de la optimización combinatoria tiene en común que es difícil encontrar soluciones factibles puesto que hay muchas soluciones posibles y alguna de estas es óptima.
+
+Algunos problemas conocidos que forman parte de este área, son el problema de la mochila \footnote{https://www.sciencedirect.com/topics/computer-science/knapsack-problem} o el problema del vendedor viajero \footnote{https://www.sciencedirect.com/topics/computer-science/travelling-salesman-problem}.
+
+Estos problemas tienen un planteamiento sencillo pero son difíciles de solucionar, y mediante ciertos algoritmos, como se explicará en la sección \ref{sec:heu-meta}, se pueden obtener soluciones factibles en tiempos de computo reducidos.
 
 \subsection{Heurística y Metaheurística}
+\label{sec:heu-meta}
 Se define heurística, según el Diccionario de la Real Academia de la Lengua Española \cite{rae-heuristica}, como ``técnica de la indagación y del descubrimiento'' y ``en algunas ciencias, manera de buscar la solución de un problema mediante métodos no rigurosos, como por tanteo, reglas empíricas, etc.''.
 
 Aplicándolo a temas científicos se define como el proceso de creación de medios, estrategias y principios para alcanzar un objetivo eficaz al problema dado \cite{conceptodef-heuristica}, y en relación a esto, el término, fue acuñado por George Polya en su libro ``How to Solve It'' \cite{gpolya-book-1}, más tarde traducido a ``Cómo plantear y resolver problemas'' \cite{gpolya-book-2}.
