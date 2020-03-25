@@ -57,7 +57,7 @@ En la actualidad, los grafos se han convertido en una pieza fundamental en la vi
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.3]{Figures/molecula-graph.pdf}
-	\caption{Representación de moléculas como grafos.}
+	\caption{Representación estándar y en grafo de la molécula del Tolueno.}
 	\scriptsize Fuente: https://www.blopig.com/blog/2019/01/graph-based-methods-for-cheminformatics
 	\label{fig:molecula-graph}
 \end{figure}
@@ -70,9 +70,9 @@ En la actualidad, los grafos se han convertido en una pieza fundamental en la vi
 	\label{fig:teleco-graph}
 \end{figure}
 
-Muchas son las aplicaciones que se les puede dar a los grafos y a la información que se obtiene de ellos, como nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis de datos referentes al mercado busátil \cite{market-data} para conocer nuevas formas de predicción de exito en inversiones \cite{vid-graf-ai}, y hacer un uso adecuado y responsable de los mismos es una gran tarea.
+Muchas son las aplicaciones que se les puede dar a los grafos y a la información que se obtiene de ellos, como nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis de datos referentes al mercado bursátil \cite{market-data} para conocer nuevas formas de predicción de éxito en inversiones \cite{vid-graf-ai}, y hacer un uso adecuado y responsable de los mismos es una gran tarea.
 
-Por todo esto, es muy importante tratar los datos y sus relaciones de la manera mas eficiente posible, por lo que se han creados base de datos orientadas a grafos como es el caso de Neo4j \footnote{https://neo4j.com/} para tal efecto, con el fin de entender las relaciones y asi poder hallar nuevas técnicas y posibilidades para afrontar problemas y resolverlos más ágilmente.
+Por todo esto, es muy importante tratar los datos y sus relaciones de la manera mas eficiente posible, por lo que se han creado incluso base de datos orientadas a grafos, como es el caso de Neo4j \footnote{https://neo4j.com/}, con el fin de entender las relaciones y así poder hallar nuevas técnicas y más posibilidades para afrontar problemas y resolverlos de una manera mucho más ágil.
 
 
 \section{Conceptos previos}
@@ -151,7 +151,7 @@ Dos conceptos a tener en cuenta en un algoritmo metaheurístico son la intensifi
 \label{sec-clique}
 El término clique se puede asemejar a un grupo de personas, las cuales serían los nodos o vértices de un grafo, a las que les unen los mismos intereses por algún tema en concreto, estas uniones serían las aristas que unen los nodos del grafo \cite{LUCE:1949}.
 
-En teoría de grafos, un clique, es el subgrafo, perteneciente a un grafo, en el cuál todos sus nodos o vértices son adyacentes entre sí, es decir, todo par de nodos o vértices está conectados mediante una arista, en términos matemáticos se describe como, dado un grafo $G = (V, E)$ donde $V$ indica el conjunto de vértices del grafo y $E$ indica el conjunto de aristas del grafo \cite{web-clique}, un clique se define como:
+En teoría de grafos, un clique, es el subgrafo, perteneciente a un grafo, en el cuál todos sus nodos o vértices son adyacentes entre sí, es decir, todo par de nodos o vértices está conectados mediante una arista, en términos matemáticos se describe como, dado un grafo $G = (V, E)$ donde $V$ indica el conjunto de vértices del grafo y $E$ indica el conjunto de aristas del grafo \cite{web-clique}, un clique $C$ se define como:
 \[
 C \subseteq V(G) ~ \wedge ~ u, v ~ \epsilon ~ C  \wedge  u  \neq v \Rightarrow u, v ~ \epsilon ~ E(G)
 \]
@@ -206,7 +206,7 @@ donde $\omega$ denota el número de vértices del clique, su cardinalidad.
 
 \subsection{Problema del clique de ratio máximo}
 \label{intro-problema}
-Como se introdujo en la sección \ref{sec-clique} el concepto clique en cuanto a teoría de grafos es fundamental y muy estudiado, y más concretamente la búsqueda del clique máximo dentro de un grafo, a este problema se le conoce como ``El problema del clique máximo'' o \gls{MCP} por sus siglas en ingles ``Maximum clique problem'', y es catalogado como un problema NP-completo, como se aprecia en la figura \ref{fig:problemas-np}.
+Como se introdujo en la sección \ref{sec-clique} el concepto clique en cuanto a teoría de grafos es fundamental y muy estudiado, y más concretamente la búsqueda del clique máximo dentro de un grafo, a este problema se le conoce como ``El problema del clique máximo'' o \gls{MCP} por sus siglas en ingles ``Maximum clique problem'', y es catalogado según los problemas NP como un problema NP-completo.
 
 \begin{figure}[H]
 	\centering
@@ -215,9 +215,9 @@ Como se introdujo en la sección \ref{sec-clique} el concepto clique en cuanto a
 	\label{fig:problemas-np}
 \end{figure}
 
-Los problemas denominados como NP, acrónimo de non-deterministic polynomial time o tiempo polinominal no determinista, en teoría de complejidad computacional, se les conoce como el conjunto de problemas que se pueden resolver en un tiempo polinómico por una máquina de Turing no determinista. Esta clasificación, además, contiene todos los problemas de tipo P y de tipo NP-completos como es el caso del problema del clique máximo.
+Los problemas denominados como NP, figura \ref{fig:problemas-np}, acrónimo de non-deterministic polynomial time o tiempo polinominal no determinista, en teoría de complejidad computacional, se les conoce como el conjunto de problemas que se pueden resolver en un tiempo polinómico por una máquina de Turing no determinista. Esta clasificación, además, contiene todos los problemas de tipo P y de tipo NP-completos como es el caso del problema del clique máximo.
 
-Una variante de este problema es el llamado ``Problema de clique de peso máximo'' o \gls{MWCP} por sus siglas en inglés a Maximum weight clique problem, en el que se asocia un peso no negativo a cada vértice y cuyo objetivo es encontrar un clique con el máximo valor en la suma de los pesos de sus vértices. Este problema esta estrechamente ligado al problema tratado en este trabajo final de grado, el cual busca el clique de ratio máximo ya que si se asocian dos pesos no negativos a cada vértice se obtiene el problema del clique de ratio máximo \gls{MRCP} o ``Maximum Ratio Clique Problem''. En este problema se busca el clique máximo en un grafo con la mayor proporción de ratio. Esta proporción se define como las sumas de los pesos de los vértices.
+Una variante de este problema es el llamado ``Problema de clique de peso máximo'' o \gls{MWCP} por sus siglas en inglés a Maximum weight clique problem, en el que se asocia un peso no negativo a cada vértice y cuyo objetivo es encontrar un clique con el máximo valor en la suma de los pesos de sus vértices. Este problema esta estrechamente ligado al problema tratado en este trabajo final de grado, el cual busca el clique de ratio máximo ya que si se asocian dos pesos no negativos a cada vértice se obtiene el problema del clique de ratio máximo \gls{MRCP} o ``Maximum Ratio Clique Problem''. En este problema se busca el clique máximo en un grafo con la mayor proporción de ratio. Esta proporción se define como las sumas de los pesos de los vértices:
 
 \begin{equation*}
 \frac{\sum_{i=1}^{n}p_ix_i}{\sum_{i=1}^{n}q_ix_i}
@@ -245,12 +245,12 @@ maximizar && f = \frac{\sum_{i=1}^{n}p_ix_i}{\sum_{i=1}^{n}q_ix_i} \\
 && x_i \in {0,~1} : \forall v_i \in V.
 \end{eqnarray}
 
-El problema del clique de ratio máximo ha sido catalogado como un problema NP-difícil o NP-complejo, como se aprecia en la figura \ref{fig:np-dificil}, por lo que no es posible obtener una solución factible por métodos heurísticos o exactos.
+El problema del clique de ratio máximo ha sido catalogado como un problema NP-difícil o NP-complejo, figura \ref{fig:np-dificil}, por lo que no es posible obtener una solución factible por métodos heurísticos o exactos.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics{Figures/problemas-np-hard.pdf}
-	\caption{Diagrama de problemas Np y NP-difícil.}
+	\caption{Diagrama de problemas NP y NP-difícil.}
 	\label{fig:np-dificil}
 \end{figure}
 
@@ -259,7 +259,7 @@ El análisis sobre el estado del arte que se ha realizado sobre el problema del 
 
 También se ha estudiado en mayor medida el problema de la búsqueda del clique de peso máximo, más cercano al tratado en este trabajo final de grado, como se puede observar en \cite{mwcp-ls} se implementan sendos algoritmos de búsqueda local llamados SCCWalk y SCCWalk4L, \cite{mwcp-ml} en el que se hace uso del muestreo estocástico y el machine-learning para abordar el problema eliminando variables de decisión que no formarían parte de una solución óptima.
 
-En el documento desarrollado por Samyukta Sethuraman  y Sergiy Butenko \cite{mrcp-Sethuraman:2015} se trata el problema desde tres puntos de vista, mediante el IBM CPLEX para resolver el problema de manera lineal y la aplicación de la búsqueda binaria y el método de Newton.
+En el documento desarrollado por Samyukta Sethuraman  y Sergiy Butenko \cite{mrcp-Sethuraman:2015} se trata el problema desde tres puntos de vista, mediante el IBM CPLEX para resolver el problema de manera lineal, la aplicación de la búsqueda binaria y el método de Newton.
 
 En \cite{mrcp-moeni} se trata el problema basándose en el enfoque eficiente que dan las funciones de diferencia de convexos (DC) y sus algoritmos (DCA) el cuál provee resultados competitivos, a su vez, introducen las desigualdades válidas que ayudan a mejorar el tiempo computacional en la obtención de resultados de calidad al problema.
 

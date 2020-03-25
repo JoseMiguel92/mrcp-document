@@ -6,24 +6,48 @@
 
 %-------------------------------------------------------------------------------
 
-En este capítulo se describe el desarrollo completo del proyecto, desde el diseño  hasta la implementación de este, así como la metodología utilizada para la correcta evolución del mismo.
+En este capítulo se describe el desarrollo completo del proyecto, desde el diseño hasta la implementación de este, así como la metodología utilizada para la correcta evolución del mismo.
 
 \section{Diseño}
-aaa
+Para la realización del desarrollo del proyecto se ha optado por seguir un paradigma de programación orientada a objetos y se ha seguido la arquitectura que se plantea en el diagrama de clases de la figura \ref{fig:diagrama-clases}, en el que se parte de un documento principal, en este caso se trata de un script ejecutable, grasp\_main.py, que contiene la información inicial y las llamadas a las clases y métodos de estas necesarios para obtener los resultados al problema.
+
+A continuación de este parten las clases:
+ \begin{itemize}
+	\item \textbf{Instance}: Esta clase contendrá toda la información relacionada con una instancia o definición de grafo del problema, la cuál se compone de la clase \textbf{Node}, que contiene toda la información relativa a un nodo, así como operaciones relacionadas con el mismo.
+	\item \textbf{SolutionGrasp}: Esta clase contendrá los métodos necesarios para la implementación del algoritmo \gls{GRASP} y de la búsqueda local.
+	\item \textbf{GraphUtils}: Esta clase está formada por métodos estáticos en su mayoría, y contendrá todos los métodos de utilidad relacionadas con los grafos, así como la posterior exportación a fichero de los resultados obtenidos durante el proceso. También se compone de la clase \textbf{Logger}, la cuál ayuda a configurar el sistema de registros del proyecto, con el cuál poder trazar errores y ver el estado del progreso más fácilmente.
+\end{itemize}
+
+También se encuentran las clases:
+ \begin{itemize}
+	\item \textbf{SolutionGreedy}: Esta clase abstracta contiene lo necesario para construir una solución completa mediante un algoritmo voráz. El término completa se refiere a los atributos density, el cuál indica la densidad del grafo del que parte la solución; clique, el cuál contiene el listado de nodos que forman parte de la solución; sol\_value, el cuál indica el valor de la solución o función objetivo; cardinality, que contiene el valor del número de nodos de la solución y compute\_time, que indica el tiempo total de computo en hallar esa solución.
+	\item \textbf{SolutionGreedyRatio}: Clase especializada en la obtención del mejor candidato posible por la condición de ratio.
+	\item \textbf{SolutionGreedyNeighbors}: Al igual que \textbf{SolutionGreedyRatio}, esta clase se especializa en encontrar el mejor nodo candidato pero con mayor número de nodos vecinos.
+\end{itemize}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figures/Diagrama-clases.pdf}
+	\caption{Diagrama de clases del proyecto.}
+	\label{fig:diagrama-clases}
+\end{figure}
 
 \section{Implementación}
-La implementación de este proyecto se basa en la ejecución de un script\footnote{script} escrito en lenguaje Python el cual parte de una clase en la que se encuentra la siguiente sentencia de código:
+\label{sec:implementacion}
+La implementación de este proyecto se basa en la ejecución de un script\footnote{Secuencia de ordenes o instrucciones que serán intepretadas para su ejecución.} escrito en lenguaje Python el cual parte de una clase en la que se encuentra la siguiente sentencia de código:
  \begin{lstlisting}[language=Python]
  if__name__ == "__main__"
  \end{lstlisting}
- la cual posibilita la ejecución del script como aplicacion standalone\footnote{standalone} mediante el comando:
+ la cual posibilita la ejecución del script mediante el comando:
   \begin{lstlisting}[language=bash]
   python grasp_main.py
- \end{lstlisting}
+ \end{lstlisting} 
+
  Este script, en adelante Grasp Main, tiene la configuración necesaria para ajustar el programa:
  \begin{itemize}
  	\item Número de iteraciones a realizar por cada fichero.
- 	\item Ruta donde se encuentran los ficheros de definición de los grafos a procesar.
+ 	\item Ruta donde se encuentran los ficheros de definición de los grafos a procesar o instancias.
  	\item Ruta de los ficheros de resultados generados por el programa.	
  \end{itemize}
 
@@ -59,16 +83,20 @@ Para mantener cierta información en un único lugar se ha implementado la clase
 
 Para probar las diferentes funciones del proyecto se han escrito casos de prueba mediante la librería de Python unittest\footnote{https://docs.python.org/3/library/unittest.html}, para conseguir un código tolerable a posibles fallos y mantenible.
 
-//TODO Explicación del proceso, partiendo de la lectura de fichero, luego crear solucion voraz
-
-
 \section{Metadología empleada}
 Para el desarrollo de este proyecto se ha optado por seguir una metodología de tipo iterativa e incremental, lo que permite evolucionar el proyecto progresivamente e ir adaptando los requisitos del cliente, en este caso los tutores del proyecto, en el menor tiempo posible, mejorando así la calidad del producto final con el menor esfuerzo.
 
 Estas iteraciones e incrementos de funcionalidad se han realizado durante todo el desarrollo del proyecto, mediante reuniones, con un lapso de aproximadamente 3 a 4 semanas entre ellas, corrigiendo errores de la iteración anterior si los hubiera y aumentando la funcionalidad del producto a entregar tanto en funcionalidad como en calidad, de esta manera se consigue una evolución progresiva y segura sobre el producto y los requerimientos que el proyecto exige.
 
-Para mantener el control y administrar lo correspondiente sobre las tareas a realizar, las que se han realizado y las realizadas del proyecto, se ha usado la utilidad Trello\footnote{https://trello.com/es}, la cuál mediante tarjetas sobre el tablero del proyecto permite conocer las tareas del proyecto, así como conocer su estado, y añadir nuevas si así fuera necesario.
+Para mantener el control y administrar lo correspondiente sobre las tareas a realizar, las que se han realizado y las realizadas del proyecto, se ha usado el administrador de proyectos Trello\footnote{https://trello.com/es}, el cuál mediante tarjetas sobre el tablero del proyecto permite conocer las tareas del proyecto, así como su estado, detalles de la misma y añadir nuevas si fuera necesario, en la figura \ref{fig:trello-tarjetas} se muestra un ejemplo de uso del sistema de tarjetas que ofrece la herramienta.
 
-En cuanto al mantenimiento de versiones del proyecto se ha usado el sistema de control de versiones Git\footnote{https://git-scm.com/} a través del portal de alojamiento de repositorios GitHub\footnote{https://github.com/}, para interactuar entre el repositorio local y el repositorio remoto se ha optado por hacer uso tanto de la terminal mediante los comandos del propio sistema de control de versiones Git como del cliente para tal propósito GitKraken\footnote{https://www.gitkraken.com/}, el cuál permite mediante su sencilla e intuitiva interfaz mantener un control exhaustivo sobre las ramas y versionado de las distintas piezas de código del proyecto en el que se trabaja, así como revisar posibles conflictos que se produzcan.
+\begin{figure}[H]
+	\centering
+	\includegraphics{Figures/trello-tarjetas.pdf}
+	\caption{Ejemplo del sistema de tarjetas de Trello.}
+	\label{fig:trello-tarjetas}
+\end{figure}
+
+En cuanto al mantenimiento de versiones del proyecto se ha usado el sistema de control de versiones Git\footnote{https://git-scm.com/}. Este control de versiones se ha gestionado a su vez a través del portal de alojamiento de repositorios GitHub\footnote{https://github.com/}. Para interactuar entre el repositorio local y el repositorio remoto se ha optado por hacer uso tanto de la terminal mediante los comandos del propio sistema de control de versiones Git como del cliente para tal propósito GitKraken\footnote{https://www.gitkraken.com/}, el cuál permite mediante su sencilla e intuitiva interfaz mantener un control exhaustivo sobre las ramas y versionado de las distintas piezas de código del proyecto en el que se trabaja, así como revisar posibles conflictos que se produzcan.
 %-------------------------------------------------------------------------------
 
