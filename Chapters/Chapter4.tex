@@ -44,14 +44,15 @@ La implementación de este proyecto se basa en la ejecución de un script\footno
   python grasp_main.py
  \end{lstlisting} 
 
- Este script, en adelante Grasp Main, tiene la configuración necesaria para ajustar el programa:
+ Este script, en adelante Grasp Main, tiene la configuración necesaria para ajustar los parámetros del programa:
  \begin{itemize}
  	\item Número de iteraciones a realizar por cada fichero.
  	\item Ruta donde se encuentran los ficheros de definición de los grafos a procesar o instancias.
  	\item Ruta de los ficheros de resultados generados por el programa.	
+ 	\item Valores de $\alpha$ para ajustar la aleatoriedad del algoritmo.
  \end{itemize}
 
-Grasp Main se encarga de recorrer recursivamente los ficheros que se encuentran en la ruta de recursos definida y por cada uno de los ficheros encontrados crea un objeto de tipo Instance, añadiendo la información del grafo:
+Grasp Main se encarga de recorrer recursivamente los ficheros que se encuentran en la ruta de recursos definida, y, por cada uno de los ficheros encontrados crea un objeto de tipo Instance, añadiendo la información del grafo:
  \begin{itemize}
 	\item Número de nodos.
 	\item Número de aristas.
@@ -67,19 +68,19 @@ Esta estructura de datos contiene tantos objetos de tipo Node como tengo el graf
 	\item Estructura de datos con las relaciones de este nodo con otros nodos del grafo.
 \end{itemize}
 
-Tras terminar esta operación, realiza el procesado un número N de veces, según se haya definido previamente en la configuración de la aplicación en Grasp Main, y por cada tipo de constructivo de los que dispone la aplicación, en este caso, constructivo ratio y constructivo adyacente, los cuales serán explicados más adelante. 
-La implementación del algoritmo \gls{GRASP} se encuentra en la clase SolutionGrasp y contiene los métodos necesarios para la obtención mediante el algoritmo de una solución, partiendo de la función $find\_grasp\_solutio$n, la cual inicializa los siguientes datos:
+Tras terminar esta operación, realiza el procesado un número N de veces, según se haya definido previamente en la configuración de la aplicación, y por cada tipo de constructivo de los que dispone la aplicación, en este caso, constructivo en base al ratio de los nodos y constructivo en base al numero de nodos adyacentes, los cuales serán explicados más adelante. A partir de este punto se llama al algoritmo \gls{GRASP}, el cual se encuentra en la clase SolutionGrasp y contiene los métodos necesarios para la obtención de una solución, partiendo de la función $find\_grasp\_solution$, la cual inicializa los siguientes datos:
 \begin{itemize}
 	\item vertex, el cuál es obtenido de manera aleatoria entre todos los nodos del grafo.
 	\item solution, conjunto inicializado con el vértice obtenido anteriormente.
 	\item cl, lista de candidatos posibles para encontrar una solución.
 \end{itemize}
 
-//TODO ¿se debe explicar cada método que forma parte de esta funcion?
+Para la fase constructiva del algoritmo, la implementación se apoya en la función $get\_g$ y según el tipo elegido en la configuración inicial, se creará un objeto del constructivo específico, SolutionGreedyRatio o SolutionGreedyAdjacent. Estos heredan de la clase abstracta\footnote{En programación orientada a objetos, es un tipo de clase que no puede ser instanciada, y por lo general sirve para definir otras clases de este tipo.} SolutionGreedy, la cuál tiene la información compartida por ambos tipos, y delega la implementación de la función $find\_better$ en cada una de las clases específicas, quienes mediante un algoritmo de tipo voraz buscan una solución factible en un tiempo muy reducido.
+Un vez se obtienen los resultados de los candidatos, esta lista es procesada mediante la función $get\_rcl$, la cual mediante el valor de $\mu$, calculado como se mostró en el algoritmo \ref{alg:grasp} con el valor configurado $\alpha$, permite obtener la lista de candidatos restringida.
+Con esta lista restringida, el siguiente paso es escoger de manera aleatoria un nodo de esta e incluirlo en el conjunto solución, eliminando los nodos de la lista de candidatos que no son adyacentes a este, ya que no formarían una solución factible.
+Esta operación es realizada hasta que la lista de candidatos esté vacía.
 
-Esta función se apoya en otra auxiliar, nombrada como $ find\_solution\_aux $, la cuál implementa el algoritmo utilizado, de esta manera se desacopla el tipo de algoritmo de la búsqueda de una solución, dando la posibilidad a un cambio posterior si fuera necesario. Dicha función, procesará los nodos del grafo tal como se describió en el capítulo anterior. Para la fase constructiva del algoritmo, según el tipo elegido en la configuración inicial, se creará un objeto del contructivo específico, SolutionGreedyRatio o SolutionGreedyAdjacent. Estos heredan de la clase abstracta\footnote{En programación orientada a objetos, es un tipo de clase que no puede ser instanciada, y por lo general sirve para definir otras clases de este tipo.} SolutionGreedy, la cuál tiene la información compartida por ambos tipos, y delega la implementación de la función $find\_better$ en cada una de las clases específicas, quienes mediante un algoritmo de tipo voráz buscan una solución factible en un tiempo muy reducido.
-
-Para mantener cierta información en un único lugar se ha implementado la clase GraphUtils, la cuál contiene información necesaria para los grafos y métodos útiles para usarse durante el procesado de los ficheros.
+Para mantener cierta información en un único lugar se ha implementado la clase GraphUtils, la cuál contiene información necesaria para los grafos y métodos útiles para usarse durante el procesado de los ficheros, así como su posterior exportación a ficheros de tipo CSV en este caso para mostrar los resultados obtenidos.
 
 Para probar las diferentes funciones del proyecto se han escrito casos de prueba mediante la librería de Python unittest\footnote{https://docs.python.org/3/library/unittest.html}, para conseguir un código tolerable a posibles fallos y mantenible.
 
