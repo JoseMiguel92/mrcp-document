@@ -47,8 +47,8 @@ El proceso de realización de este trabajo fin de grado ha supuesto la superaci�
 \section{Líneas de desarrollo futuras}
 En cuanto a las líneas de desarrollo futuras para este problema se podrían seguir las siguientes posibilidades:
 
-\begin{itemize}
-	\item aaa
-\end{itemize}
+En primer lugar algo que ofrece un considerable aumento en el rendimiento del código es la utilización de Cython\footnote{https://cython.org/}, mediante pequeñas modificaciones en el código para ajustarlo a su lenguaje propio, este compilador optimizado permite aumentar el  rendimiento de las funciones escritas en Python, algunas de sus características son la unificación de la mayor legibilidad del código escrito en Python con el rendimiento de C y la interactuación eficientemente con grandes conjuntos de datos mediante NumPy\footnote{https://numpy.org/}.
+
+Y otra buena mejora en el propio código Python podría ser la implementación del procesado paralelo aprovechando el módulo concurrent.futures que ofrece Python el cuál hace uso del módulo multiprocessing, por lo tanto no se ve afectado por el \gls{GIL} \footnote{https://docs.python.org/3/glossary.html?highlight=gil#term-global-interpreter-lock} y permite crear un pool de procesos, mediante la función ProcessPoolExecutor, para ejecutar llamadas asíncronas. Una buena opción a priori sería separar los ficheros de las instancias y que cada proceso las vaya procesando paralelamente.
 
 %-------------------------------------------------------------------------------
