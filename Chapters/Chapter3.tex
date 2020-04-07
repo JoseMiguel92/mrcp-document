@@ -46,7 +46,7 @@ En esta fase se ha usado el algoritmo \ref{alg:const-voraz} el cuál es común a
 	$ S \gets \emptyset $  \\[0.2cm]
 	$ Adyacentes \gets  SeleccionAdyacentes(nodo) $  \\[0.2cm]
 	\While{$|Adyacentes| \not= 0$}{
-		$ candidato \gets buscarMejor(adyacente) $  \\[0.2cm]
+		$ candidato \gets buscarMejor(adyacentes) $  \\[0.2cm]
 		\If{formaClique(candidato)}{
 			$ Adyacentes \gets Adyacentes \cap SeleccionAdyacentes(candidato) $  \\[0.2cm]
 			$ S \gets S \cup \{candidato\} $  \\[0.2cm]
@@ -64,7 +64,7 @@ En primer lugar se define el algoritmo \ref{alg:const-voraz-ratio} para el const
 \begin{algorithm}
 	$ ratio \gets -1 $ \\[0.2cm]
 	$ nodoElegido \gets NULO $ \\[0.2cm]
-	\For{nodo}{
+	\For{nodo $\epsilon$ adyacentes}{
 		$ ratioNodo \gets calcularRatio(nodo) $ \\[0.2cm]
 		\If{ratioNodo >\hspace{0.1cm}  ratio}{
 			$ ratio \gets ratioNodo $ \\[0.2cm]
@@ -82,7 +82,7 @@ Y en segundo lugar, se define el algoritmo \ref{alg:const-voraz-ady} para el con
 \begin{algorithm}
 	$ vecinos \gets -1 $ \\[0.2cm]
 	$ nodoElegido \gets NULO $ \\[0.2cm]
-	\For{nodo}{
+	\For{nodo $\epsilon$ adyacentes}{
 		$ vecinosNodo \gets SeleccionAdyacentes(nodo) $ \\[0.2cm]
 		\If{$ |vecinosNodo| $ >\hspace{0.1cm}  vecinos}{
 			$ vecinos \gets |vecinosNodo|  $ \\[0.2cm]
@@ -107,7 +107,7 @@ Un vez se tiene un clique, se añaden todos los nodos posibles, es decir, que si
 	$ vecinos \gets \emptyset $ \\[0.2cm]
 	$ vecinos \gets obtenerVecinos(solucion)$ \\[0.2cm]
 	$ vecinosOrdenados \gets ordenarVecinos(vecinos)$ \\[0.2cm]
-	\For{nodo}{
+	\For{nodo $\epsilon$ vecinosOrdenados}{
 		$ solucion \gets incluirNodo(solucion, nodo) $ \\[0.2cm]
 		\If{$ no \hspace{0.1cm} esClique(solucion) $}{
 				$ solucion \gets excluirNodos(solucion, nodo) $ \\[0.2cm]
