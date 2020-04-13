@@ -85,6 +85,38 @@ headsepline, % Uncomment to get a line under the header
 
 \usepackage[bottom]{footmisc}
 
+% Start - Convert csv to table %
+\usepackage{booktabs} % For \toprule, \midrule and \bottomrule
+\usepackage{siunitx} % Formats the units and values
+\usepackage{pgfplotstable} % Generates table from .csv
+\usepackage{longtable}
+\sisetup{
+	round-mode          = places, % Rounds numbers
+	round-precision     = 4, % to 2 places
+}
+\pgfkeysifdefined{/pgfplots/table/output empty row/.@cmd}{
+	% upcoming releases offer this more convenient option:
+	\pgfplotstableset{
+		empty header/.style={
+			every head row/.style={output empty row},
+		}
+	}
+}{
+	% versions up to and including 1.5.1 need this:
+	\pgfplotstableset{
+		empty header/.style={
+			typeset cell/.append code={%
+				\ifnum\pgfplotstablerow=-1 %
+				\pgfkeyssetvalue{/pgfplots/table/@cell content}{}%
+				\fi
+			}
+		}
+	}
+}
+% End - Convert csv to table %
+
+
+
 \IncMargin{1.5em}
 \SetNlSty{texttt}{(}{)}
 

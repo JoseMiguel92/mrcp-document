@@ -12,6 +12,7 @@ En este capítulo se exponen los diferentes recursos tanto hardware como softwar
 A continuación se detallará la máquina  y software para el desarrollo y procesado de las instancias para la comprobación del algoritmo, y las instancias utilizadas que describen diferentes casos y situaciones reales.
 
 \subsection{Descripción de la máquina utilizada}
+\label{sec:maquina}
 Para la realización de las diversas pruebas y procesado de las instancias de este problema, se ha utilizado una máquina con las siguientes características:
 
 \begin{itemize}
@@ -23,6 +24,7 @@ Para la realización de las diversas pruebas y procesado de las instancias de es
 El desarrollo del código se ha realizado mediante el lenguaje de programación Python\footnote{https://www.python.org/}, en su versión 3.7.4, a través del \gls{IDE} \footnote{Entorno de desarrollo integrado.}, PyCharm\footnote{https://www.jetbrains.com/es-es/pycharm/} de JetBrains en su versión 2019.3.1.
 
 \subsection{Instancias utilizadas}
+\label{sec:Instancias-utilizadas}
 Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado, estas, hacen referencia a diferentes conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos como precios del mercado de valores y turbinas de viento. A continuación se detallan los diferentes conjuntos:
 
 \begin{itemize}
@@ -39,6 +41,125 @@ Las instancias con las que se ha contado para comprobar la eficiencia del algori
 %-------------------------------------------------------------------------------
 
 \section{Análisis de los resultados}
-Mostrar y comentar los resultados obtenidos.
+En esta sección se muestran los resultados obtenidos tras el procesamiento de las instancias descritas en la sección \ref{sec:Instancias-utilizadas} y empleando la máquina descrita en la sección \ref{sec:maquina}. Estos resultados se han obtenido en dos fases, una primera fase preliminar, con un conjunto reducido de las instancias y una segunda fase final con todas las instancias del problema para su posterior comparación con los resultados de estudios previos.
 
+\subsection{Experimentos preliminares}
+En estas primeras pruebas se han seleccionado un subconjunto de 22 instancias del problema, con el fin de estudiar la calidad del algoritmo y comprobar los resultados obtenidos mediante distintos valores para $\alpha$ en varias iteraciones.
+
+Para la realización de las pruebas de esta sección se han elegido las instancias de todos los conjuntos para ampliar el rango de las pruebas. El número de nodos en estas instancias varia desde los 30 hasta los 1000 nodos, con densidades del 1 al 50 por ciento aproximadamente.
+A esta selección de instancias se les ha aplicado los dos constructivos desarrollados para la resolución a este problema, descritos en la sección \ref{sec:implementacion}, y a su vez se ha aplicado los valores de $\alpha$ $\epsilon$ \{0.25, 0.5, 0.75\} y adicionalmente un valor de $\alpha$ aleatorio.
+Este experimento se ha realizado procesando cada instancia 100 veces, que unido a lo anteriormente descrito, hace un total de 800 iteraciones por fichero.
+
+
+\begin{footnotesize}
+\pgfplotstabletypeset[
+empty header,
+begin table=\begin{longtable},
+	every first row/.append style={before row={
+			\caption{Resultados con constructivo adyacentes y búsqueda local.}
+			\label{table:tabla-pre-ls-ady}\\\toprule
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\alpha$} &\textbf{$Mejor$} \\ \toprule    
+			\endfirsthead
+			%
+			\multicolumn{6}{c}
+			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+			\toprule 
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\alpha$} &\textbf{$Mejor$} \\ \toprule    
+			\endhead
+			\midrule \multicolumn{6}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+			\endfoot
+			\midrule
+			\multicolumn{6}{r}{{Concluido}} \\ \bottomrule
+			\endlastfoot
+	}},
+	end table=\end{longtable},
+col sep=semicolon,
+string type,
+display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+display columns/1/.style={column type={S}},
+display columns/2/.style={column type={c}},
+display columns/3/.style={column type={S}},
+display columns/4/.style={column type={S}},
+display columns/5/.style={column type={c}},
+]{Results/pre-ls-adyacente.csv}
+
+\pgfplotstabletypeset[
+empty header,
+begin table=\begin{longtable},
+	every first row/.append style={before row={%
+			\caption{Resultados con constructivo ratio y búsqueda local.}
+			\label{table:tabla-pre-ls-ratio}\\\toprule
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\alpha$} &\textbf{$Mejor$} \\ \toprule    
+			\endfirsthead
+			%
+			\multicolumn{6}{c}%
+			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+			\toprule 
+			%
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\alpha$} &\textbf{$Mejor$} \\ \toprule    
+			\endhead
+			%
+			\midrule \multicolumn{6}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+			\endfoot
+			%
+			\midrule
+			\multicolumn{6}{r}{{Concluido}} \\ \bottomrule
+			\endlastfoot
+	}},
+	end table=\end{longtable},
+col sep=semicolon,
+string type,
+display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+display columns/1/.style={column type={S}},
+display columns/3/.style={column type={S}},
+display columns/4/.style={column type={S}},
+]{Results/pre-ls-ratio.csv}
+\end{footnotesize}
+Durante los experimentos preliminares se han recopilado los datos que se muestran en las tablas \ref{table:tabla-pre-ls-ady} y \ref{table:tabla-pre-ls-ratio}, en la que se encuentran los mejores resultados tras todas las iteraciones de ambos constructivos, donde finalmente, el constructivo mediante el cálculo por ratio ha obtenido mejores resultados en relación ratio-cardinalidad, es decir, este constructivo permite obtener valores de ratio mayores y cliques con mayor número de nodos en tiempos de computo razonables, a esto hay que añadir que el $\alpha$ que ha permitido obtener mejores resultado ha sido el valor 0.75.
+
+
+\subsection{Experimento final}
+
+\begin{footnotesize}
+\pgfplotstabletypeset[
+empty header,
+begin table=\begin{longtable},
+	every first row/.append style={before row={%
+			\caption{Resultados del experimento final.}
+			\label{table:exp-final}\\\toprule
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\Delta f(\%)$} &\textbf{$Mejor$} \\ \toprule    
+			\endfirsthead
+			%
+			\multicolumn{6}{c}%
+			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+			\toprule 
+			%
+			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\Delta f(\%)$} &\textbf{$Mejor$} \\ \toprule    
+			\endhead
+			%
+			\midrule \multicolumn{6}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+			\endfoot
+			%
+			\midrule
+			\multicolumn{6}{r}{{Concluido}} \\ \bottomrule
+			\endlastfoot
+	}},
+	end table=\end{longtable},
+col sep=semicolon,
+string type,
+display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+display columns/1/.style={column type={S}},
+display columns/3/.style={column type={S}},
+]{Results/tabla-final.csv}
+\end{footnotesize}
+	
 %-------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
