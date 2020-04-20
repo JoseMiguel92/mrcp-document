@@ -15,7 +15,7 @@
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
 %-------------------------------------------------------------------------------
-En este capítulo se introduce el tema a tratar partiendo de conceptos previos que ayudarán al lector a entender mejor el desarrollo, siguiendo con la definición del problema y la motivación del mismo, y por último, se muestra una revisión del estado del arte relacionado con este problema.
+En este capítulo se presenta la motivación del problema, los conceptos previos que ayudarán al lector a entender mejor el desarrollo, siguiendo con la definición del problema, y por último, se muestra una revisión del estado del arte relacionado con este problema.
 
 \section{Estructura de la memoria}
 La memoria de este trabajo final de grado se estructura de la siguiente manera:
@@ -30,15 +30,8 @@ La memoria de este trabajo final de grado se estructura de la siguiente manera:
 
 \section{Motivación del problema}
 
-En la actualidad, los grafos se han convertido en una pieza fundamental en la vida cotidiana de las personas, desde conocidas redes sociales como Twitter o Facebook \cite{api-graph}, figuras \ref{fig:twitter-graph} y \ref{fig:facebook-graph}
- , pasando por las telecomunicaciones, figura \ref{fig:teleco-graph}, redes de metro, figura \ref{fig:metro-graph}, se ha simplificado para no contener todas las estaciones, hasta llegar a las simples moléculas, figura \ref{fig:molecula-graph}, pues si hay algo que todas estas cosas tienen en común, son los grafos, las conexiones entre nodos por una u otra razón, desde aficiones, hasta enlaces químicos \cite{grafo-molecula}, y encontrar bajo cierto criterio un subconjunto en los miles de millones de nodos y conexiones posibles que estos albergan es todo un reto, sin duda, y es más, realizarlo de una manera eficiente y en el menor tiempo posible, es un reto aún mayor.
- 
- \begin{figure}[H]
-	\centering
-	\includegraphics{Figures/twitter-graph.pdf}
-	\caption{Grafo de un tweet en Twitter.}
-	\label{fig:twitter-graph}
-\end{figure}
+En la actualidad, los datos se han convertido en una pieza fundamental en la vida cotidiana de las personas. Tanto su obtención como su posterior tratamiento son grandes retos que deben ser estudiados y, por supuesto, realizar esto de una manera eficiente y en el menor tiempo posible, es un reto aún mayor. A partir de esto se obtiene el término grafo, el cual es fundamental en este ámbito y que se define como la relación entre nodos o vértices mediante uniones llamadas aristas, y esto, es lo realmente interesante a estudiar, las relaciones existentes entre los distintos nodos.\newline
+Existen muchos casos en los que se puede realizar la obtención y tratamiento de estos datos, como por ejemplo, la red social Facebook\footnote{https://es-es.facebook.com/}, que como se observa en la figura \ref{fig:facebook-graph} define su grafo como las relaciones entre las personas y aficiones que les unen. Además ofrece una \gls{API} \footnote{Conjunto de métodos que forman parte de una librería y que a modo de capa de abstracción son publicados para que puedan ser usados en otros desarrollos software.} con la que poder interactuar con los datos que son recopilados en ella \cite{api-graph}.
 
  \begin{figure}[H]
 	\centering
@@ -47,12 +40,25 @@ En la actualidad, los grafos se han convertido en una pieza fundamental en la vi
 	\label{fig:facebook-graph}
 \end{figure}
 
- \begin{figure}[H]
-	\centering
-	\includegraphics{Figures/metro-graph.pdf}
-	\caption{Grafo sección del metro de Madrid.}
-	\label{fig:metro-graph}
+Por otro lado, también muy cercano a la vida cotidiana de las personas, se encuentran las redes de telecomunicaciones, figura \ref{fig:teleco-graph}, que interconectan todos los aparatos eletrónicos, que de una manera u otra se comunicación entre ellos, y las redes de metro, figura \ref{fig:metro-graph}, que permiten el movimiento de las personas en la ciudad y pueden ser estudiadas por uso, localización, etcétera.
+
+\begin{figure}[H]
+	\begin{minipage}[b]{0.5\linewidth}
+			\centering
+			\includegraphics{Figures/teleco-graph.pdf}
+			\caption{Grafo de telecomunicaciones.}
+			\label{fig:teleco-graph}
+	\end{minipage}
+	\hspace{0.5cm}
+	\begin{minipage}[b]{0.5\linewidth}
+		\centering
+		\includegraphics{Figures/metro-graph.pdf}
+		\caption{Grafo sección del metro de Madrid.}
+		\label{fig:metro-graph}
+	\end{minipage}
 \end{figure}
+
+Y por último, una representación de grafo que es básico son las moléculas y los enlaces químicos \cite{grafo-molecula}, que se pueden representar como en la figura \ref{fig:molecula-graph}.
 
  \begin{figure}[H]
 	\centering
@@ -62,29 +68,19 @@ En la actualidad, los grafos se han convertido en una pieza fundamental en la vi
 	\label{fig:molecula-graph}
 \end{figure}
 
+Estos ejemplos, tienen en común las conexiones entre todos los nodos que forman su estructura de grafo, y son muchas las aplicaciones e información que se obtiene de ellos como, nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis del mercado bursátil para conocer nuevas formas de predicción de éxito en inversiones \cite{vid-graf-ai}.\newline
 
- \begin{figure}[H]
-	\centering
-	\includegraphics{Figures/teleco-graph.pdf}
-	\caption{Grafo de telecomunicaciones.}
-	\label{fig:teleco-graph}
-\end{figure}
-
-Muchas son las aplicaciones que se les puede dar a los grafos y a la información que se obtiene de ellos, como nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis de datos referentes al mercado bursátil \cite{market-data} para conocer nuevas formas de predicción de éxito en inversiones \cite{vid-graf-ai}, y hacer un uso adecuado y responsable de los mismos es una gran tarea.
-
-Por todo esto, es muy importante tratar los datos y sus relaciones de la manera mas eficiente posible, por lo que se han creado incluso base de datos orientadas a grafos, como es el caso de Neo4j \footnote{https://neo4j.com/}, con el fin de entender las relaciones y así poder hallar nuevas técnicas y más posibilidades para afrontar problemas y resolverlos de una manera mucho más ágil.
+Por todo esto, es muy importante tratar los datos de forma adecuada y responsable, así como las relaciones entre ellos eficientemente. Para ello se han creado incluso base de datos orientadas a grafos, como es el caso de Neo4j \footnote{https://neo4j.com/}, con el fin de entender las relaciones y así poder hallar nuevas técnicas y más posibilidades para afrontar problemas y resolverlos de una manera mucho más ágil.
 
 
 \section{Conceptos previos}
-Para comprender mejor todas las explicaciones que se van a exponer a lo largo de toda esta memoria, se van a describir algunos conceptos a continuación.
+Para comprender mejor todas las explicaciones que se van a exponer a lo largo del documento, se describen a continuación algunos conceptos.
 
 \subsection{Optimización combinatoria}
-La optimización combinatoria es el área dentro de las matemáticas aplicadas que se encarga de maximizar o minimizar una función en un espacio de soluciones, el cuál debe ser finito. En la actualidad es un campo con un gran crecimiento ya que ``muchos de los problemas de la vida real pueden ser formulados mediante optimización combinatoria'' \cite{opt-comb-rg}.
-Los problemas que forman parte de la optimización combinatoria tiene en común que es difícil encontrar soluciones factibles puesto que hay muchas soluciones posibles y alguna de estas es óptima.
+La optimización combinatoria es el área, dentro de las matemáticas aplicadas, que se encarga de maximizar o minimizar una función en un espacio de soluciones, el cuál debe ser finito. En la actualidad es un campo con un gran crecimiento ya que ``muchos de los problemas de la vida real pueden ser formulados mediante optimización combinatoria'' \cite{opt-comb-rg}.
+Los problemas que forman parte de la optimización combinatoria tienen en común la dificultad de encontrar soluciones factibles, puesto que existen muchas soluciones posibles y alguna de estas es óptima.
 
-Algunos problemas conocidos que forman parte de este área, son el problema de la mochila \footnote{https://www.sciencedirect.com/topics/computer-science/knapsack-problem} o el problema del vendedor viajero \footnote{https://www.sciencedirect.com/topics/computer-science/travelling-salesman-problem}.
-
-Estos problemas tienen un planteamiento sencillo pero son difíciles de solucionar, y mediante ciertos algoritmos, como se explicará en la sección \ref{sec:heu-meta}, se pueden obtener soluciones factibles en tiempos de computo reducidos.
+Algunos problemas conocidos que forman parte de este área, son el problema de la mochila \footnote{https://www.sciencedirect.com/topics/computer-science/knapsack-problem} o el problema del vendedor viajero \footnote{https://www.sciencedirect.com/topics/computer-science/travelling-salesman-problem}.Estos problemas tienen un planteamiento sencillo pero son difíciles de solucionar, y mediante ciertos algoritmos, como se explicará en la sección \ref{sec:heu-meta}, se pueden obtener soluciones factibles en tiempos de cómputo reducidos.
 
 \subsection{Heurística y Metaheurística}
 \label{sec:heu-meta}
@@ -94,7 +90,7 @@ Aplicándolo a temas científicos se define como el proceso de creación de medi
 
 Añadiendo al término heurística el prefijo ``meta'' procedente del griego, que significa ``más allá'' o ``nivel superior'', se puede definir metaheurística como el conjunto de procedimientos heurísticos combinados para obtener una solución, aunque no exacta si eficiente, a un problema que no tiene un algoritmo heurístico específico o su aplicación es ineficiente \cite{wiki-metaheuristica}. Este término lo acuño Fred Glover en sus trabajos sobre búsqueda tabú en 1986 \cite{fred-glover}.
 
-Existen un gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una de ellas basada en el número de soluciones.\\
+Existen un gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una posible clasificación.\\
 \begin{figure}[H]
 	\centering
 	\diagram{Trayectoriales}{
@@ -145,7 +141,7 @@ Existen un gran variedad de algoritmo metaheurísticos que se pueden clasificar 
 	\label{fig:clasif-metahs}
 \end{figure}
 
-Dos conceptos a tener en cuenta en un algoritmo metaheurístico son la intensificación o explotación en una región, de modo que una alta intensificación hará que el algoritmo realice una búsqueda más exhaustiva en esa región, y la diversificación o exploración de nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
+Dos conceptos a tener en cuenta en un algoritmo metaheurístico son la intensificación, que indica la exhaustividad con la que el algoritmo explora una región, y la diversificación, que indica como el algoritmo es capaz de explorar nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
 
 \subsection{Clique}
 \label{sec-clique}
