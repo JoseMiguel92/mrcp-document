@@ -8,17 +8,14 @@
 En este capítulo se describe el algoritmo metaheurístico utilizado, exponiendo todas sus características para la obtención de una solución al problema.
 
 \section{Metaheurística GRASP\index{GRASP}}
-El acrónimo \gls{GRASP} se forma a partir de sus siglas en inglés Greedy Randomized Adaptative Search Procedure o que en castellano es Procedimiento de búsqueda voráz aleatorizado y adaptativo, el término fue introducido por primera vez por Feo y Resende en 1995 en su artículo con el mismo nombre \cite{grasp-feo-resende}.
+El acrónimo \gls{GRASP} (Greedy Randomized Adaptative Search Procedure) o en castellano procedimiento de búsqueda voráz aleatorizado y adaptativo, fue introducido por primera vez por Feo y Resende en 1995 en su artículo con el mismo nombre \cite{grasp-feo-resende}.
 
-Este algoritmo se basa en el multi-arranque, dónde cada arranque es una iteración de un procedimiento que está constituido por dos partes bien diferenciadas, la fase constructiva, en la que se obtiene una solución de buena calidad, y una fase de mejora, en la que partiendo de la solución obtenida en la fase anterior, se intenta mejorar localmente \cite{libro-metaheuristicas}. 
+Este algoritmo se basa en el multi-arranque, dónde cada uno de ellos es una iteración de un procedimiento que está constituido por dos partes bien diferenciadas, la fase constructiva, en la que se obtiene una solución de buena calidad, y una fase de mejora, en la que partiendo de la solución obtenida en la fase anterior, se intenta mejorar localmente \cite{libro-metaheuristicas}. 
 En \cite{grasp-flightrecoveryproblem} \cite{grasp-parallel} \cite{grasp-weapon} \cite{grasp-empaquetado} \cite{grasp-ruta} \cite{grasp-vertex} se pueden encontrar diversos documentos en los que se tratan problemas aplicando la metaheurística \gls{GRASP}.
 
-En el algoritmo \ref{alg:grasp} se muestra el pseudocódigo de la metaheurística \gls{GRASP} que se ha empleado para el desarrollo y obtención de una solución preliminar para este problema, y posteriormente, se muestra el algoritmo \ref{alg:bl}, con el cual se ha refinado esta solución para obtener una mejor. Dichos algoritmos se puede explicar, aplicándolo al problema tratado, de la siguiente manera:\\
+En el algoritmo \ref{alg:grasp} se muestra el pseudocódigo de la metaheurística \gls{GRASP} que se ha empleado para el desarrollo y obtención de una solución preliminar para este problema, y posteriormente, se muestra el algoritmo \ref{alg:bl}, con el cual se ha refinado esta solución para obtener una mejor.\\
 
-Partiendo de un grafo $G=(V, E)$ donde $V$ son los vértices o nodos del grafo, y $E$ las aristas que unen estos nodos. Se toma un vértice $v$ aleatorio de entre los vértices del grafo. $v$ se incluye en la solución $S$ ya que cumple con las restricciones del problema, descritas en la sección \ref{intro-problema}, a partir de $v$ se construye la lista de candidatos $CL$, definida como todos los nodos adyacentes a $v$ que forman parte de la lista de nodos del grafo de partida. A partir de este momento se toma un elemento de la lista de candidatos y con este se obtiene, mediante una función voráz el nodo con valor máximo y mínimo de esta función, con estos valores y un valor dado $\alpha$, que oscilará entre $0$ y $1$ y marca la aleatoriedad de la función de manera que si $\alpha$ es igual a 1 la función será menos aleatoria y se obtendría solo el mejor candidato, mientras que si es 0 la función es más aleatoria y se obtendrán todos los candidatos posibles, teniendo esto en cuenta, se obtiene el valor de $\mu$, el cuál pondrá el límite para la lista de candidatos restringida $RCL$, obtenida mediante la lista de candidatos $CL$ ordenada de mayor valor a menor valor tomando los primeros valores hasta alcanzar el valor de $\mu$. Tomando esta lista, se elegirá de manera aleatoria un nodo de la misma, $u$, el cuál se añadirá a la lista solución $S$ y eliminándolo de la lista de candidatos junto con los nodos de la lista de candidatos que no son adyacentes a ese nodo. Este procedimiento será repetido hasta que la lista de candidatos este vacía, obteniéndose en ese momento la lista $S$ que conformará la solución preliminar.
-A partir de este momento, se obtendrán todos los nodos adyacentes a los nodos que conforman la solución, de una manera ordenada mediante el valor de su ratio calculado y se irán incluyendo en la solución, comprobando si forman o no un clique, como indican las restricciones del problema, si no es así, se eliminarán los todos que causen el conflicto para obtener un clique, y posteriormente se añadirán todos los nodos adyacentes a los del clique, obteniendo de esta manera un clique máximo y solución factible al problema.
-
-\begin{algorithm}
+\begin{algorithm}[H]
 	\SetAlgoLined
 	$ v \gets rnd( V ) $ \\[0.2cm]
 	$ S \gets \{ v \} $ \\[0.2cm]
@@ -37,11 +34,24 @@ A partir de este momento, se obtendrán todos los nodos adyacentes a los nodos q
 	\label{alg:grasp}
 \end{algorithm}
 
+Dichos algoritmos se puede explicar, aplicándolo al problema tratado, de la siguiente manera:\\
+Partiendo de un grafo $G=(V, E)$ donde $V$ son los vértices o nodos del grafo, y $E$ las aristas que unen estos nodos, se toma un vértice $v$ aleatorio de entre los vértices del grafo. El vértice $v$ se incluye en la solución $S$ ya que cumple con las restricciones del problema, descritas en la sección \ref{intro-problema}. A partir de $v$ se construye la lista de candidatos $CL$, definida como todos los nodos adyacentes a $v$ que forman parte de la lista de nodos del grafo de partida. A continuación se toma un elemento de la lista de candidatos, con el que se obtiene mediante una función voraz un listado de nodos. Esta función será determinada antes de iniciar el proceso e indicará si se deben obtener los nodos según su ratio o según el número de adyacentes al nodo tratado, será explicada con mayor detalle en la sección \ref{sec:faseConstructiva}. De este listado de nodos se escogen los valores máximo y mínimo, que junto a $\alpha$ se obtendrá el valor de $\mu$.
+
+El valor de $\alpha$ será configurado antes de este proceso, el cual oscilará entre $0$ y $1$, marcando la aleatoriedad de la función de manera que, si es igual a 1 la función será menos aleatoria obteniéndose solo el mejor candidato, y si es igual 0 la función es más aleatoria y se obtendrán todos los candidatos posibles.
+
+El valor $\mu$ permite obtener la lista de candidatos restringida $RCL$. Esta lista se genera mediante la lista de candidatos $CL$ ordenada de mayor a menor valor, tomando los primeros valores hasta alcanzar el valor de $\mu$.
+
+Tomando esta lista, se elegirá de manera aleatoria un nodo $u$, como se muestra en la línea 9 del algortimo \ref{alg:grasp}, el cuál se añadirá a la lista solución $S$, eliminándolo de la lista de candidatos junto con los nodos que no sean adyacentes a este. 
+
+Este procedimiento será repetido hasta que la lista de candidatos este vacía, obteniéndose en ese momento la lista $S$ final, que conformará la solución preliminar.
+
+A partir de este momento, se obtendrán todos los nodos adyacentes a los nodos que conforman la solución, de una manera ordenada, mediante el valor de su ratio calculado. Estos se irán incluyendo en la solución, comprobando si forman un clique, como indican las restricciones del problema, si no es así, se eliminarán los nodos que causen el conflicto para obtener un clique. Posteriormente se añadirán todos los nodos adyacentes a este, obteniendo de esta manera un clique máximo y solución factible al problema.
+
 \subsection{Fase constructiva}
+\label{sec:faseConstructiva}
+En esta fase se ha usado el algoritmo \ref{alg:const-voraz} para definir la función de ambos constructivos, ya que esta es común, y sólo se diferencian en como obtiene cada uno el mejor nodo a incluir en su resultado.\\
 
-En esta fase se ha usado el algoritmo \ref{alg:const-voraz} el cuál es común a ambos constructivos y sólo se diferencian en como obtiene cada uno su mejor nodo a escoger para incluir en su solución, los cuales se definen a continuación.\\
-
-\begin{algorithm}
+\begin{algorithm}[H]
 	\SetAlgoLined
 	$ S \gets \emptyset $  \\[0.2cm]
 	$ Adyacentes \gets  SeleccionAdyacentes(nodo) $  \\[0.2cm]
@@ -59,9 +69,10 @@ En esta fase se ha usado el algoritmo \ref{alg:const-voraz} el cuál es común a
 	\label{alg:const-voraz}
 \end{algorithm}
 
-En primer lugar se define el algoritmo \ref{alg:const-voraz-ratio} para el constructivo que obtiene una solución mediante un algoritmo voraz, buscando el mayor ratio de cada nodo adyacente al de partida.\\
+\vspace{0.4cm}
+En primer lugar se define el algoritmo \ref{alg:const-voraz-ratio} para el constructivo que obtiene una solución mediante un algoritmo voraz, buscando el mayor ratio de cada nodo adyacente al de partida.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 	$ ratio \gets -1 $ \\[0.2cm]
 	$ nodoElegido \gets NULO $ \\[0.2cm]
 	\For{nodo $\epsilon$ adyacentes}{
@@ -76,8 +87,8 @@ En primer lugar se define el algoritmo \ref{alg:const-voraz-ratio} para el const
 	\label{alg:const-voraz-ratio}
 \end{algorithm}
 
-
-Y en segundo lugar, se define el algoritmo \ref{alg:const-voraz-ady} para el constructivo que obtiene una solución mediante un algoritmo voraz buscando el mayor número de vecinos de cada nodo adyacente al de partida.\\
+\vspace{0.4cm}
+Y en segundo lugar, se define el algoritmo \ref{alg:const-voraz-ady} para el constructivo que obtiene una solución mediante un algoritmo voraz buscando el mayor número de vecinos de cada nodo adyacente inicial.
 
 \begin{algorithm}
 	$ vecinos \gets -1 $ \\[0.2cm]
@@ -95,13 +106,8 @@ Y en segundo lugar, se define el algoritmo \ref{alg:const-voraz-ady} para el con
 \end{algorithm}
 
 \subsection{Fase de búsqueda}
+\label{sec:faseBusqueda}
 Para esta segunda fase, se define el siguiente algoritmo \ref{alg:bl}, el cuál parte de la solución obtenida previamente en la fase constructiva.
-
-Con esta solución, se obtienen todos los nodos vecinos de cada nodo que forma parte de la solución, ordenados de mayor a menor ratio. Esta ordenación se realiza con el fin de aumentar las posibilidades de obtener un mejor valor de ratio, ya que, por cada uno de estos nodos, se va a añadir a la solución, comprobando si forma o no una solución, es decir, un clique.
-
-En el caso de que no formará clique, se descartan todos aquellos nodos de la solución que impiden que se forme un clique.
-
-Un vez se tiene un clique, se añaden todos los nodos posibles, es decir, que sigan formando clique, con el fin de obtener el máximo clique, como marca la restricción del problema.
 
 \begin{algorithm}
 	$ vecinos \gets \emptyset $ \\[0.2cm]
@@ -110,7 +116,7 @@ Un vez se tiene un clique, se añaden todos los nodos posibles, es decir, que si
 	\For{nodo $\epsilon$ vecinosOrdenados}{
 		$ solucion \gets incluirNodo(solucion, nodo) $ \\[0.2cm]
 		\If{$ no \hspace{0.1cm} esClique(solucion) $}{
-				$ solucion \gets excluirNodos(solucion, nodo) $ \\[0.2cm]
+			$ solucion \gets excluirNodos(solucion, nodo) $ \\[0.2cm]
 		}
 		$ solucion \gets incluirAdyacentes(solucion, nodo) $ \\[0.2cm]
 	}
@@ -118,6 +124,10 @@ Un vez se tiene un clique, se añaden todos los nodos posibles, es decir, que si
 	\caption{Pseudocódigo algoritmo búsqueda local.}
 	\label{alg:bl}
 \end{algorithm}
+
+Con esta solución se obtienen todos los vecinos de cada nodo que forma parte de ella, ordenados de mayor a menor ratio. Esta ordenación se realiza con el fin de aumentar las posibilidades de obtener un mejor valor de ratio. Para cada uno de estos nodos se comprueba si forma o no una solución, es decir, un clique. En el caso de que no cumpliera las restricciones, se descartan todos aquellos nodos que impiden que se forme una solución
+
+Un vez se tiene un clique, se añaden todos los nodos posibles, es decir, que sigan formando clique, con el fin de obtener el máximo clique, como marca la restricción del problema.
 
 %-------------------------------------------------------------------------------
 
