@@ -6,30 +6,32 @@
 
 %-------------------------------------------------------------------------------
 
-En este capítulo se exponen los diferentes recursos tanto hardware como software para la realización de este trabajo fin de grado y como, a partir de estos, se han obtenido los resultados para su posterior análisis.
+En este capítulo se exponen los diferentes recursos, tanto hardware como software, para la realización de este trabajo fin de grado y cómo, a partir de estos, se han obtenido los resultados para su posterior análisis.
 
 \section{Recursos utilizados}
-A continuación se detallará la máquina  y software para el desarrollo y procesado de las instancias para la comprobación del algoritmo, y las instancias utilizadas que describen diferentes casos y situaciones reales.
+A continuación se detallará la máquina y software empleados para el desarrollo del código, así como las instancias utilizadas para comprobar la calidad del algoritmo .
 
 \subsection{Descripción de la máquina utilizada}
 \label{sec:maquina}
-Para la realización de las diversas pruebas y procesado de las instancias de este problema, se ha utilizado una máquina con las siguientes características:
+Para la realización de las diversas pruebas y procesado de las instancias de este problema se ha utilizado una máquina con las siguientes características:
 
 \begin{itemize}
 
-\item \textbf{Procesador:} Intel Core i5 2,7 GHz
+\item \textbf{Procesador:} Intel(R) Core(TM) i5-5257U CPU 2.70 GHz
 \item \textbf{Memoria RAM:} 8 GB 1867 Mhz DDR3
 \end{itemize}
 
-El desarrollo del código se ha realizado mediante el lenguaje de programación Python\footnote{https://www.python.org/}, en su versión 3.7.4, a través del \gls{IDE} \footnote{Entorno de desarrollo integrado.}, PyCharm\footnote{https://www.jetbrains.com/es-es/pycharm/} de JetBrains en su versión 2019.3.1.
+El desarrollo del código se ha realizado mediante el lenguaje de programación Python\footnote{https://www.python.org/}, en su versión 3.7.4, a través del entorno de desarrollo integrado o \gls{IDE} (Integrated Development Environment) PyCharm\footnote{https://www.jetbrains.com/es-es/pycharm/} de JetBrains en su versión 2019.3.1.
 
 \subsection{Instancias utilizadas}
 \label{sec:Instancias-utilizadas}
-Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado, estas, hacen referencia a diferentes conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos como precios del mercado de valores y turbinas de viento. A continuación se detallan los diferentes conjuntos:
+Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado, han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado. Estas hacen referencia a conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos, como precios del mercado de valores o turbinas de viento.
+
+A continuación se detallan los diferentes conjuntos en los que se dividen las instancias:
 
 \begin{itemize}
 	
-	\item \textbf{Conjuntos de tipo A y B:} Estos conjuntos son instancias de grafos generadas mediante una distribución de probabilidad uniforme, variando entre los 100 y los 500 nodos, así como la densidad del mismo que varía entre 45,78 \% y 53,64 \%.
+	\item \textbf{Conjuntos de tipo A y B:} Estos conjuntos son instancias de grafos generadas mediante una distribución de probabilidad uniforme, variando su número de nodos entre 100 y 500, la densidad de estos grafos oscila entre el 45,78 \% y el 53,64 \%.
 	\item  \textbf{Conjunto de tipo C:} Los datos pertenecientes a las instancias de este tipo hacen referencia a datos de los precios del mercado de valores.
 	\item  \textbf{Conjunto de tipo D:} Las instancias de este conjunto son datos para la construcción de turbinas de viento, donde cada nodo representa una localización de estas turbinas y sus pesos son la media de la velocidad del viento y el coste de contrucción de una turbina en ese punto.
 	\item  \textbf{Conjunto de tipo E:} Estas instancias están extraídas del segundo y décimo DIMACS Implementation Challenge\footnote{http://dimacs.rutgers.edu/programs/challenge/}, donde cada nodo tiene un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 2}$. Adicionalmente se ha añadido un nodo más a cada instancia de este conjunto, el cual está conectado al resto de nodos de la misma, con un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 1}$, donde i es el número del nodo dentro de esa instancia.
@@ -41,14 +43,23 @@ Las instancias con las que se ha contado para comprobar la eficiencia del algori
 %-------------------------------------------------------------------------------
 
 \section{Análisis de los resultados}
-En esta sección se muestran los resultados obtenidos tras el procesamiento de las instancias descritas en la sección \ref{sec:Instancias-utilizadas} y empleando la máquina descrita en la sección \ref{sec:maquina}. Estos resultados se han obtenido en dos fases, una primera fase preliminar, con un conjunto reducido de las instancias y una segunda fase final con todas las instancias del problema para su posterior comparación con los resultados de estudios previos.
+En esta sección se muestran los resultados obtenidos tras el procesamiento de las instancias descritas en la sección \ref{sec:Instancias-utilizadas} y empleando la máquina descrita en la sección \ref{sec:maquina}. Estos resultados se han obtenido en dos fases, una primera fase preliminar, con un conjunto reducido de las instancias y una segunda fase, con todas las instancias del problema para su posterior comparación con los resultados de estudios previos.
 
 \subsection{Experimentos preliminares}
-En estas primeras pruebas se han seleccionado un subconjunto de 22 instancias del problema, con el fin de estudiar la calidad del algoritmo y comprobar los resultados obtenidos mediante distintos valores para $\alpha$ en varias iteraciones.
+En esta fase ha sido seleccionado un subconjunto de 22 instancias del problema, con el fin de estudiar la calidad del algoritmo y comprobar los resultados obtenidos mediante distintos valores para $\alpha$ en varias iteraciones, estas se han elegido de todos los conjuntos para ampliar el rango de las pruebas. El número de nodos en estas instancias varia desde los 30 hasta los 1000 nodos, con densidades del 1 al 50 por ciento aproximadamente.
 
-Para la realización de las pruebas de esta sección se han elegido las instancias de todos los conjuntos para ampliar el rango de las pruebas. El número de nodos en estas instancias varia desde los 30 hasta los 1000 nodos, con densidades del 1 al 50 por ciento aproximadamente.
-A esta selección de instancias se les ha aplicado los dos constructivos desarrollados para la resolución a este problema, descritos en la sección \ref{sec:implementacion}, y a su vez se ha aplicado los valores de $\alpha$ $\epsilon$ \{0.25, 0.5, 0.75\} y adicionalmente un valor de $\alpha$ aleatorio.
+A esta selección de instancias se les ha aplicado los dos constructivos desarrollados, descritos en la sección \ref{sec:implementacion}, y a su vez se han aplicado los valores de $\alpha$ $\epsilon$ \{0.25, 0.5, 0.75\} y adicionalmente un valor de $\alpha$ aleatorio.
 Este experimento se ha realizado procesando cada instancia 100 veces, que unido a lo anteriormente descrito, hace un total de 800 iteraciones por fichero.
+
+Durante los experimentos preliminares se han recopilado los datos mostrados en la tabla \ref{table:pre-ady} para el constructivo por número de adyacentes y la tabla \ref{table:pre-ratio} para el constructivo por el valor del ratio. Las tablas están divididas en el uso del algoritmo \gls{GRASP} y su posterior mejora mediante la búsqueda local y donde:
+
+\begin{itemize}
+	\item $f$: Indica el valor de la función objetivo calculado.
+	\item c: Indica la cardinalidad del clique encontrado.
+	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
+	\item $\alpha$ : Indica el valor de $\alpha$ con el que se ha obtenido esa solución.
+	\item Mejor: Indica si la solución obtenida mediante este constructivo es mejor respecto al otro.
+\end{itemize}
 
 \begin{scriptsize}
 \pgfplotstabletypeset[
@@ -135,23 +146,18 @@ display columns/9/.style={column type={c}},
 ]{Results/pre-ratio-fin.csv}
 \end{scriptsize}
 
-Durante los experimentos preliminares se han recopilado los datos mostrados en las tablas \ref{table:pre-ady} y \ref{table:pre-ratio}, las cuales están divididas en el uso del algoritmo \gls{GRASP} y su posterior mejora mediante la búsqueda local y donde:
+En estas tablas se encuentran los mejores resultados tras todas las iteraciones de ambos constructivos y la posterior mejora del algoritmo con la búsqueda local.
 
-\begin{itemize}
-	\item $f$: Indica el valor de la función objetivo calculado.
-	\item c: Indica la cardinalidad del clique encontrado.
-	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
-	\item $\alpha$ : Indica el valor de $\alpha$ con el que se ha obtenido esa solución.
-	\item Mejor: Indica si la solución obtenida mediante este constructivo es mejor respecto al otro.
-\end{itemize}
+Aunque en algunos casos, añadir al algoritmo la mejora mediante la búsqueda local no parece aumentar la calidad de la solución, en la mayoría de casos si, por lo que finalmente se añadirá para la experimentación final. 
 
-En ellas se encuentran los mejores resultados tras todas las iteraciones de ambos constructivos y la posterior mejor del algoritmo con la búsqueda local.
-Aunque se puede observar que añadir al algoritmo la búsqueda local no parece suponer una mejor en algunos casos, en muchos otros si, por lo que finalmente se añadirá para la experimentación final. Además, tras estas iteraciones se ha comprobado que el constructivo mediante el cálculo por ratio ha obtenido mejores resultados en relación ratio-cardinalidad, es decir, este constructivo permite obtener valores de ratio mayores y cliques con mayor número de nodos en tiempos de computo razonables, a esto hay que añadir que el $\alpha$ que ha permitido obtener mejores resultado ha sido el valor 0.75.
+Además, tras estas iteraciones se ha comprobado que el constructivo mediante el cálculo por ratio ha obtenido mejores resultados en relación ratio-cardinalidad, alcanzado 13 soluciones mejores respecto a las 9 soluciones mejores obtenidos mediante el constructivo por adyacentes. 
+
+Por lo tanto el constructivo basado en el ratio, permite obtener valores para la función objetivo mayores y cliques con mayor número de nodos en tiempos de computo razonables. A esto hay que añadir que el valor de $\alpha$ con el que se han obtenido mejores resultados ha sido 0.75, llegando a 16 soluciones mejores de las 22 instancias procesadas en este caso.
 
 
 \subsection{Experimento final}
 
-Como se ha comentado en la anterior sección, este experimento final se ha realizado mediante la siguiente configuración:
+En esta sección se han recopilado todos los datos obtenidos en las pruebas preliminares para el procesado final y se ha configurado de la siguiente manera:
 \begin{itemize}
 	\item Algoritmo \gls{GRASP}.
 	\item Búsqueda local.
@@ -160,7 +166,7 @@ Como se ha comentado en la anterior sección, este experimento final se ha reali
 	\item 100 iteraciones por instancia.
 \end{itemize}
 
-Con los que tras el procesado de todas las instancias, se han obtenido los datos mostrador en la tabla \ref{table:exp-final}, donde:
+Con los que tras el procesado de todas las instancias, se han obtenido los datos mostrados en la tabla \ref{table:exp-final}, donde:
 \begin{itemize}
 	\item $f$: Indica el valor de la función objetivo calculado.
 	\item c: Indica la cardinalidad del clique encontrado.
@@ -168,6 +174,8 @@ Con los que tras el procesado de todas las instancias, se han obtenido los datos
 	\item $\Delta f (\%)$: Indica la variación respecto al valor de la función objetivo en la que se ha basado este trabajo.
 	\item Mejor: Indica si la solución obtenida mediante el algoritmo es mejor o no que la del trabajo anterior.
 \end{itemize}
+
+Los datos recopilados durante el experimento final han sido comparados con los obtenidos previamente en el trabajo realizado por Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283}, los cuales se pueden observar en la tabla 2 del mismo. 
 
 \begin{footnotesize}
 \pgfplotstabletypeset[
@@ -197,8 +205,9 @@ display columns/3/.style={column type={S}},
 ]{Results/tabla-final.csv}
 \end{footnotesize}
 
-Se puede observar que en todas las instancias se han obtenido unos valores muy cercanos al trabajo anterior y por lo tanto el algoritmo cumple ciertos mínimos de calidad, aún así, sólo en 10 casos se han obtenido valores mejores.
-También cabe destacar que los resultados obtenidos se han realizado en un tiempo de computo significativamente bajo, por lo que aunque no supere al trabajo anteriormente realizado por Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283} si mejora los resultados obtenidos mediante la linealización y el método de Newton con el solucionador Gurobi con los que se compara dicho trabajo.
+Como indica el porcentaje de variación de la función objetivo, $\Delta f (\%)$, se puede observar que en todas las instancias se han obtenido valores, en algunos casos, muy cercanos al trabajo anterior, ya que son valores cercanos a 0, y por lo tanto el algoritmo cumple cierta calidad. Aún así, sólo en 10 casos se han obtenido valores mejores.
+
+También cabe destacar que los resultados obtenidos se han realizado en un tiempo de computo significativamente bajo, por lo que aunque no supere al trabajo de referencia, si mejora los resultados obtenidos mediante la linealización y el método de Newton con el solucionador Gurobi\footnote{https://www.gurobi.com/es/} con los que se compara dicho trabajo.
 
 %-------------------------------------------------------------------------------
 

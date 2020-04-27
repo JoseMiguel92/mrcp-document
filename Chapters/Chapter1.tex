@@ -35,8 +35,8 @@ Existen muchos casos en los que se puede realizar la obtención y tratamiento de
 
  \begin{figure}[H]
 	\centering
-	\includegraphics{Figures/facebook-graph.pdf}
-	\caption{Grafo relaciones en Facebook.}
+	\includegraphics[scale=0.8]{Figures/facebook-graph.pdf}
+	\caption{Grafo de relaciones en Facebook.}
 	\label{fig:facebook-graph}
 \end{figure}
 
@@ -45,20 +45,20 @@ Por otro lado, también muy cercano a la vida cotidiana de las personas, se encu
 \begin{figure}[H]
 	\begin{minipage}[b]{0.5\linewidth}
 			\centering
-			\includegraphics{Figures/teleco-graph.pdf}
+			\includegraphics[scale=0.8]{Figures/teleco-graph.pdf}
 			\caption{Grafo de telecomunicaciones.}
 			\label{fig:teleco-graph}
 	\end{minipage}
 	\hspace{0.5cm}
 	\begin{minipage}[b]{0.5\linewidth}
 		\centering
-		\includegraphics{Figures/metro-graph.pdf}
+		\includegraphics[scale=0.8]{Figures/metro-graph.pdf}
 		\caption{Grafo sección del metro de Madrid.}
 		\label{fig:metro-graph}
 	\end{minipage}
 \end{figure}
 
-Y por último, una representación de grafo que es básico son las moléculas y los enlaces químicos \cite{grafo-molecula}, que se pueden representar como en la figura \ref{fig:molecula-graph}.
+Y por último, otra representación de grafo, es el de las moléculas y los enlaces químicos \cite{grafo-molecula}, que se pueden representar como en la figura \ref{fig:molecula-graph}.
 
  \begin{figure}[H]
 	\centering
@@ -68,7 +68,7 @@ Y por último, una representación de grafo que es básico son las moléculas y 
 	\label{fig:molecula-graph}
 \end{figure}
 
-Estos ejemplos, tienen en común las conexiones entre todos los nodos que forman su estructura de grafo, y son muchas las aplicaciones e información que se obtiene de ellos como, nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis del mercado bursátil para conocer nuevas formas de predicción de éxito en inversiones \cite{vid-graf-ai}.\newline
+Estos ejemplos, tienen en común las conexiones entre todos los nodos que forman su estructura de grafo, y son muchas las aplicaciones e información que se obtiene de ellos como, nuevas terapias \cite{top-molec}, visión computacional y reconocimiento de patrones \cite{mcp-compVision}, análisis del mercado bursátil para conocer nuevas formas de predicción de éxito en inversiones \cite{vid-graf-ai}.
 
 Por todo esto, es muy importante tratar los datos de forma adecuada y responsable, así como las relaciones entre ellos eficientemente. Para ello se han creado incluso base de datos orientadas a grafos, como es el caso de Neo4j \footnote{https://neo4j.com/}, con el fin de entender las relaciones y así poder hallar nuevas técnicas y más posibilidades para afrontar problemas y resolverlos de una manera mucho más ágil.
 
@@ -87,57 +87,60 @@ Se define heurística, según el Diccionario de la Real Academia de la Lengua Es
 
 Añadiendo al término heurística el prefijo ``meta'', procedente del griego que significa ``más allá'' o ``nivel superior'', se puede definir metaheurística como el conjunto de procedimientos heurísticos combinados para obtener una solución a un problema que no tiene un algoritmo heurístico específico o su aplicación es ineficiente \cite{wiki-metaheuristica}. Este término lo acuñó Fred Glover en sus trabajos sobre búsqueda tabú en 1986 \cite{fred-glover}.
 
-Existen una gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una posible clasificación.\\
+Existen una gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una posible clasificación.
 
 \begin{figure}[H]
 	\centering
-	\diagram{Trayectoriales}{
-		- \diagram{Búsqueda\\local}{
-			- Con memoria: Búsqueda Tabú (\gls{TS})\\ 
-			- \diagram{Estocástica}{
-				- Búsqueda local guiada (\gls{GLS}) \\ 
-				- Métodos ruidosos (\gls{NM}) \\ 
-				- Recocido simulado (\gls{SA})\\
-				- Métodos de aceptación de\\ umbral (\gls{TAM})\\
-			}\\
-			- \diagram{Por \\entornos}{
-				- Búsqueda de entorno variable (\gls{VNS})\\
-				- Optimización parcial bajo condiciones\\ especiales de intensificación(\gls{POPMUSIC})\\
-			}\\
-		}\\
-		- \diagram{Búsqueda\\iterativa}{
-			- Búsqueda local iterativa (\gls{ILS})\\
-			- Búsqueda por entorno adaptativo borroso (\gls{FANS})\\
-		}\\
-		- \diagram{Búsqueda\\multi-arranque}{
-			- Concentración heurística (\gls{HC})\\
-			- Métodos multi-arranque adaptativos (\gls{AMS})\\
-			- Métodos multi-arranque (\gls{MSM})\\
-			- Procedimientos de búsqueda voráz,\\ aleatorizada y adaptativa (\gls{GRASP})\\
-		}\\
-	}
-	\diagram{Poblacionales}{
-		- \diagram{Combinación\\de soluciones}{
-			- \diagram{Inspiración\\evolutiva}{
-				- Algoritmos culturales (\gls{CA})\\
-				- Algoritmos genéticos (\gls{GA})\\
-				- Algoritmos meméticos (\gls{MA})\\
-			}\\
-			- \diagram{Sin inspiración}{
-				- Re-encadenamiento de\\ caminos (\gls{PR})\\
-				- Búsqueda dispersa (\gls{SS})\\
-			}\\
-		}\\
-		- \diagram{Movimientos}{
-			- Optimización por colonias de hormigas (\gls{ACO})\\
-			- Equipos asíncronos (\gls{AT})\\
-			- Algoritmos de estimación de distribución (\gls{EDA})\\
-			- Inteligencia de enjambre (\gls{SI})\\
-		}\\
-	}
+	\includegraphics[scale=0.84]{Figures/diagrama-meta.pdf}
 	\caption{Clasificación de metaheurísticas}
 	\label{fig:clasif-metahs}
 \end{figure}
+%\begin{figure}[H]
+%	\diagram{Trayectoriales}{
+%		- \diagram{Búsqueda local}{
+%			- Con memoria: Búsqueda Tabú (\gls{TS})\\ 
+%			- \diagram{Estocástica}{
+%				- Búsqueda local guiada (\gls{GLS}) \\ 
+%				- Métodos ruidosos (\gls{NM}) \\ 
+%				- Recocido simulado (\gls{SA})\\
+%				- Métodos de aceptación de\\ umbral (\gls{TAM})
+%			}\\
+%			- \diagram{Por entornos}{
+%				- Búsqueda de entorno variable (\gls{VNS})\\
+%				- Optimización parcial bajo condiciones\\ especiales de intensificación(\gls{POPMUSIC})
+%			}\\
+%		}\\
+%		- \diagram{Búsqueda iterativa}{
+%			- Búsqueda local iterativa (\gls{ILS})\\
+%			- Búsqueda por entorno adaptativo borroso (\gls{FANS})
+%		}\\
+%		- \diagram{Búsqueda multi-arranque}{
+%			- Concentración heurística (\gls{HC})\\
+%			- Métodos multi-arranque adaptativos (\gls{AMS})\\
+%			- Métodos multi-arranque (\gls{MSM})\\
+%			- Procedimientos de búsqueda voráz,\\ aleatorizada y adaptativa (\gls{GRASP})
+%		}\\
+%	}
+%	\diagram{Poblacionales}{
+%		- \diagram{Combinación\\de soluciones}{
+%			- \diagram{Inspiración\\evolutiva}{
+%				- Algoritmos culturales (\gls{CA})\\
+%				- Algoritmos genéticos (\gls{GA})\\
+%				- Algoritmos meméticos (\gls{MA})
+%			}\\
+%			- \diagram{Sin inspiración}{
+%				- Re-encadenamiento de\\ caminos (\gls{PR})\\
+%				- Búsqueda dispersa (\gls{SS})
+%			}\\
+%		}\\
+%		- \diagram{Movimientos}{
+%			- Optimización por colonias de hormigas (\gls{ACO})\\
+%			- Equipos asíncronos (\gls{AT})\\
+%			- Algoritmos de estimación de distribución (\gls{EDA})\\
+%			- Inteligencia de enjambre (\gls{SI})
+%		}\\
+%	}
+%\end{figure}
 
 Dos conceptos a tener en cuenta en un algoritmo metaheurístico son la intensificación, que indica la exhaustividad con la que el algoritmo explora una región, y la diversificación, que indica como el algoritmo es capaz de explorar nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
 
@@ -241,7 +244,7 @@ El problema del clique de ratio máximo ha sido catalogado como un problema NP-d
 \begin{figure}[H]
 	\centering
 	\includegraphics{Figures/problemas-np-hard.pdf}
-	\caption{Diagrama de problemas NP y NP-difícil.}
+	\caption{MRCP clasificado en los problemas NP-difícil.}
 	\label{fig:np-dificil}
 \end{figure}
 

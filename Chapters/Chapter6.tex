@@ -17,7 +17,7 @@ Los objetivos establecidos al comienzo del proyecto son:
 	\item Estudio e implementación del algoritmo metaheurístico \gls{GRASP} para la resolución del problema.
 \end{itemize}
 
-Y por otro lado los objetivos secundario:
+Y por otro lado los objetivos secundarios:
 \begin{itemize}
 	\item Estudio de la importancia de los grafos en la vida real.
 	\item Estudio de los distintos algoritmos metaheurísticos existentes.
@@ -26,7 +26,7 @@ Y por otro lado los objetivos secundario:
 	\item Profundización y mejora en técnicas algorítmicas, de programación y de estructuras de datos para la realización de este trabajo fin de grado.
 \end{itemize}
 
-Estos objetivos se han cumplido de manera satisfactoria, puesto que se ha estudiado el estado del arte del problema del clique de ratio máximo para poder abordarlo, así como problemas relacionados como son el problema del clique de peso máximo y el clásico problema del clique máximo.
+Estos objetivos se han cumplido de manera satisfactoria, puesto que se ha estudiado el estado del arte del problema del clique de ratio máximo para poder abordarlo, así como problemas relacionados como son el problema del clique de peso máximo (\gls{MWCP}) y el clásico problema del clique máximo (\gls{MCP}).
 También se han estudiado las distintas familias en las que se categorizan los algoritmos metaheurísticos y en especial el algoritmo \gls{GRASP}.
 Todo esto ha ayudado en la comprensión del problema y su posterior diseño e implementación.
 
@@ -34,21 +34,23 @@ Todo esto ha ayudado en la comprensión del problema y su posterior diseño e im
 
 \section{Conocimientos adquiridos}
 
-El proceso de realización de este trabajo fin de grado ha supuesto la superación de diferentes retos los cuales han permitido adquirir muchos conocimientos sobre el desarrollo de software y la gestión de un proyecto. También se han adquirido y profundizado en conceptos sobre algoritmia y estructuras de datos para obtener soluciones mejores y más eficientes al planteamiento de problemas. Por lo tanto se destacan:
+El proceso de realización de este trabajo fin de grado ha supuesto la superación de diferentes retos los cuales han permitido ampliar conocimientos sobre el desarrollo de software y la gestión de un proyecto. También se ha profundizado en conceptos sobre algoritmia y estructuras de datos para obtener soluciones mejores y más eficientes al planteamiento de problemas de optimización. Destacando:
 
 \begin{itemize}
   \item El aumento y mejora de conocimientos en el lenguaje de programación Python, usado para la implementación de este proyecto.
-  \item La comprensión sobre conceptos de algoritmia y estructuras de datos, así como la mejora continua del código, enfocados en la resolución de problemas de optimización.
+  \item La comprensión sobre conceptos de algoritmia y estructuras de datos, así como la mejora continua del código, enfocado en la resolución de problemas de optimización.
   \item Adquisición de conocimientos sobre heurísticas y metaheurísticas aplicadas a la resolución de problemas.
   \item Profundización en el uso de grafos en programación, así como la relación con el mundo real.
   \item El aprendizaje sobre \LaTeX, al utilizarlo para documentar el trabajo fin de grado.
 \end{itemize}
 
 \section{Líneas de desarrollo futuras}
-En cuanto a las líneas de desarrollo futuras para este problema se podrían seguir las siguientes posibilidades:
+En cuanto a las líneas de desarrollo futuras para este problema se describen algunas ideas como:
 
-En primer lugar algo que ofrece un considerable aumento en el rendimiento del código es la utilización de Cython\footnote{https://cython.org/}, mediante pequeñas modificaciones en el código para ajustarlo a su lenguaje propio, este compilador optimizado permite aumentar el  rendimiento de las funciones escritas en Python, algunas de sus características son la unificación de la mayor legibilidad del código escrito en Python con el rendimiento de C y la interactuación eficientemente con grandes conjuntos de datos mediante NumPy\footnote{https://numpy.org/}.
+En primer lugar, un caso que ofrece un considerable aumento en el rendimiento del código, es la utilización de Cython\footnote{https://cython.org/} mediante pequeñas modificaciones en el código para ajustarlo a su lenguaje propio. Este compilador optimizado permite aumentar el  rendimiento de las funciones escritas en Python. Algunas de sus características son la unificación de la legibilidad del código escrito en Python con el rendimiento de C, y la interacción eficiente con grandes conjuntos de datos mediante NumPy\footnote{https://numpy.org/}.
 
-Y otra buena mejora en el propio código Python podría ser la implementación del procesado paralelo aprovechando el módulo concurrent.futures que ofrece Python el cuál hace uso del módulo multiprocessing, por lo tanto no se ve afectado por el \gls{GIL} \footnote{https://docs.python.org/3/glossary.html?highlight=gil\#term-global-interpreter-lock} y permite crear un pool de procesos, mediante la función ProcessPoolExecutor, para ejecutar llamadas asíncronas. Una buena opción a priori sería separar los ficheros de las instancias y que cada proceso las vaya procesando paralelamente.
+Otra opción podría ser la implementación del procesado paralelo aprovechando el módulo $concurrent.futures$ que ofrece Python, este hace uso del módulo multiprocessing, por lo tanto no se ve afectado por el \gls{GIL}\footnote{https://docs.python.org/3/glossary.html?highlight=gil\#term-global-interpreter-lock} a diferencia del módulo multithreading, y permite crear un conjunto de procesos, mediante la función ProcessPoolExecutor, para ejecutar llamadas asíncronas. 
+
+Esta opción se puede añadir para el cálculo de los valores a partir de la lista de todos los nodos candidatos, como se describió en la sección \ref{sec_metaGrasp} en el algoritmo \ref{alg:grasp}, con el fin de obtener los resultados de manera paralela, reduciendo considerablemente el tiempo de cómputo, ya que para instancias con una gran cantidad de nodos y una alta densidad este tiempo puede ser excesivo.
 
 %-------------------------------------------------------------------------------
