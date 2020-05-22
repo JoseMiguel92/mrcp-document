@@ -45,7 +45,7 @@ parskip, % Uncomment to add space between paragraphs
 headsepline, % Uncomment to get a line under the header
 %chapterinoneline, % Uncomment to place the chapter title next to the number on one line
 %consistentlayout, % Uncomment to change the layout of the declaration, abstract and acknowledgements pages to match the default layout
-%openany % Uncomment to delete white page after introduction chapter
+openany % Uncomment to delete white page after introduction chapter
 ]{MastersDoctoralThesis} % The class file specifying the document structure
 
 \usepackage[utf8]{inputenc} % Required for inputting international characters
@@ -94,7 +94,7 @@ headsepline, % Uncomment to get a line under the header
 
 \sisetup{
 	round-mode          = places, % Rounds numbers
-	round-precision     = 4, % to 2 places
+	round-precision     = 3, % to 2 places
 }
 \pgfkeysifdefined{/pgfplots/table/output empty row/.@cmd}{
 	% upcoming releases offer this more convenient option:
@@ -212,42 +212,6 @@ headsepline, % Uncomment to get a line under the header
 	\end{flushright}
 }
 
-
-%-------------------------------------------------------------------------------
-%	ABSTRACT PAGE
-%-------------------------------------------------------------------------------
-
-\begin{abstract}
-\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
-En la presente memoria de este Trabajo Fin de Grado se trata el problema del clique de ratio máximo también llamado Maximal Ratio Clique Problem (MRCP), el cual consiste en encontrar un subgrafo completo o clique, de ratio máximo. \\
-A través de esta memoria se intenta explicar, de una manera clara, como se ha abordado el problema desde el diseño hasta la implementación, pasando por el estudio y comprensión de la metaheurística empleada, para la búsqueda optima de una solución factible. La implementación se ha realizado mediante el algoritmo Greedy Randomized Adaptive Search Procedure (GRASP) o Procedimiento de Búsqueda Voráz Aleatoria y Adaptativa, el cual ofrece buenas soluciones en un tiempo de computo razonable.
-
-Este problema es una derivación del clásico Problema del Clique Máximo o Maximal Clique Problem (MCP) que consiste en encontrar el clique máximo en un grafo.
-
-El MRCP tiene aplicaciones tan actuales como el machine-learning o las redes sociales, ya que un clique es un grupo de personas con intereses afines y por ello se ha intentado implementar un algoritmo que trate los datos de la manera más eficiente posible, de forma que se agilice el tratamiento de estos posteriormente.
-\end{abstract}
-
-%-------------------------------------------------------------------------------
-%	ACKNOWLEDGEMENTS
-%-------------------------------------------------------------------------------
-
-\begin{acknowledgements}
-\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
-Todo este trabajo no habría sido posible sin mi familia, sin su apoyo y cariño, en especial a Rebeca, la cual ha sido mi compañera de viaje y la luz que me ilumina.
-
-Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día en clase, y a mis tutores, Jesús y Alfonso, por darme la oportunidad de realizar este trabajo y de los que he aprendido mucho.
-\end{acknowledgements}
-
-%-------------------------------------------------------------------------------
-%	LIST OF CONTENTS/FIGURES/TABLES PAGES
-%-------------------------------------------------------------------------------
-
-\tableofcontents % Prints the main table of contents
-
-\listoffigures % Prints the list of figures
-
-\listoftables % Prints the list of tables
-
 %-------------------------------------------------------------------------------
 %	ABBREVIATIONS
 %-------------------------------------------------------------------------------
@@ -282,6 +246,37 @@ Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día 
 \newglossaryentry{SI}{name={SI},description={Swarm Intelligence}}
 \newglossaryentry{GIL}{name={GIL},description={Global Interpreter Lock}}
 
+
+%-------------------------------------------------------------------------------
+%	ABSTRACT PAGE
+%-------------------------------------------------------------------------------
+
+\begin{abstract}
+\addchaptertocentry{\abstractname} % Add the abstract to the table of contents
+En la presente memoria se explica como se ha abordado el problema del clique de ratio máximo o Maximal Clique Problem (MRCP). Durante el proceso se expone la metaheurística empleada para la obtención de una solución, en este caso Greedy Randomized Adaptive Search Procedure (GRASP) o Procedimiento de Búsqueda Voraz Aleatoria y Adaptativa, el cual ofrece buenas soluciones en un tiempo de computo razonable. Se explica, además, las distintas variantes del problema y las diversas aplicaciones de este, como son las redes sociales. Finalmente se analizan los datos obtenidos y comparados con el estudio previo del problema tratado por Dominik Goeke, Mahdi Moeini y David Poganiuch.
+\end{abstract}
+
+%-------------------------------------------------------------------------------
+%	ACKNOWLEDGEMENTS
+%-------------------------------------------------------------------------------
+
+\begin{acknowledgements}
+\addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
+Todo este trabajo no habría sido posible sin mi familia, sin su apoyo y cariño, en especial a Rebeca, la cual ha sido mi compañera de viaje y la luz que me ilumina.
+
+Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día en clase, y a mis tutores, Jesús y Alfonso, por darme la oportunidad de realizar este trabajo y de los que he aprendido mucho.
+\end{acknowledgements}
+
+%-------------------------------------------------------------------------------
+%	LIST OF CONTENTS/FIGURES/TABLES PAGES
+%-------------------------------------------------------------------------------
+
+\tableofcontents % Prints the main table of contents
+
+\listoffigures % Prints the list of figures
+
+\listoftables % Prints the list of tables
+
 %Print the glossary
 \printglossary[title={Listado de abreviaciones}] %Generate List of Abbreviations
 
@@ -312,7 +307,7 @@ Sin olvidar a mis amigos en la universidad, con quienes he disfrutado cada día 
 % Include the appendices of the thesis as separate files from the Appendices folder
 % Uncomment the lines as you write the Appendices
 
-%\include{Appendices/AppendixA}
+\include{Appendices/AppendixA}
 %\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 

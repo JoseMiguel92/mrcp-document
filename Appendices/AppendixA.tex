@@ -1,25 +1,163 @@
 % Appendix A
 
-\chapter{Frequently Asked Questions} % Main appendix title
+\chapter{Anexos} % Main appendix title
 
-\label{AppendixA} % For referencing this appendix elsewhere, use \ref{AppendixA}
+\label{Anexos} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-\section{How do I change the colors of links?}
+\section{Resultados del experimento preliminar con el constructivo por adyacentes}
+\label{anex:tabla_adys}
 
-The color of links can be changed to your liking using:
+En la tabla \ref{table:ax-pre-ady} se muestran los resultados tras analizar las instancias seleccionadas para la experimentación preliminar mediante el constructivo por adyacentes, separada por el uso del algoritmo \gls{GRASP} y la posterior adición de la mejora, donde:
+\begin{itemize}
+	\item $f$: Indica el valor de la función objetivo calculado.
+	\item c: Indica la cardinalidad del clique encontrado.
+	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
+	\item desv (\%): Indica la variación respecto al valor de la función objetivo mediante el algoritmo MS-VNS.
+	\item \# Mejor: Indica si la solución obtenida mediante el algoritmo es mejor o no que la del trabajo anterior.
+\end{itemize}
 
-{\small\verb!\hypersetup{urlcolor=red}!}, or
+\begin{scriptsize}
+	\pgfplotstabletypeset[
+	multicolumn names,
+	empty header,
+	begin table=\begin{longtable},
+		every first row/.append style={before row={
+				\caption{Resultados de los experimentos preliminares con constructivo adyacentes.}
+				\label{table:ax-pre-ady}\\\toprule
+				\multicolumn{1}{c|}{\textbf{Instancias}} &
+				\multicolumn{5}{c}{\textbf{GRASP}} &
+				\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
+				\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{desv(\%)} &\textbf{\#Mejor} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{desv(\%)} & \textbf{\#Mejor} \\ \toprule
+				\endfirsthead
+				%
+				\multicolumn{11}{c}
+				{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+				\toprule 
+				\multicolumn{1}{c|}{\textbf{Instancias}} &
+				\multicolumn{5}{c}{\textbf{GRASP}} &
+				\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
+				\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{desv(\%)} &\textbf{\#Mejor} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{desv(\%)} & \textbf{\#Mejor} \\ \toprule
+				\endhead
+				\midrule \multicolumn{11}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+				\endfoot
+				\midrule
+				\multicolumn{11}{r}{{Concluido}} \\ \bottomrule
+				\endlastfoot
+		}},
+		end table=\end{longtable},
+	col sep=semicolon,
+	string type,
+	display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+	display columns/1/.style={column type={S}},
+	display columns/2/.style={column type={c}},
+	display columns/3/.style={column type={S}},
+	display columns/4/.style={column type={S}},
+	display columns/5/.style={column type={c}},
+	display columns/6/.style={column type={S}},
+	display columns/7/.style={column type={S}},
+	display columns/8/.style={column type={S}},
+	display columns/9/.style={column type={S}},
+	display columns/10/.style={column type={c}},
+	]{Results/pre-ady-fin.csv}
+\end{scriptsize}
 
-{\small\verb!\hypersetup{citecolor=green}!}, or
+\section{Resultados del experimento preliminar con el constructivo por ratio}
+\label{anex:tabla_ratio} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-{\small\verb!\hypersetup{allcolor=blue}!}.
+En la tabla \ref{table:ax-pre-ratio} se muestran los resultados tras analizar las instancias seleccionadas para la experimentación preliminar mediante el constructivo de ratio, separadas por el uso del algoritmo \gls{GRASP} y su posterior mejora, donde:
+\begin{itemize}
+	\item $f$: Indica el valor de la función objetivo calculado.
+	\item c: Indica la cardinalidad del clique encontrado.
+	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
+	\item desv (\%): Indica la variación respecto al valor de la función objetivo mediante el algoritmo MS-VNS.
+	\item \# Mejor: Indica si la solución obtenida mediante el algoritmo es mejor o no que la del trabajo anterior.
+\end{itemize}
 
-\noindent If you want to completely hide the links, you can use:
+\begin{scriptsize}
+	\pgfplotstabletypeset[
+	multicolumn names,
+	empty header,
+	begin table=\begin{longtable},
+	every first row/.append style={before row={
+			\caption{Resultados de los experimentos preliminares con constructivo ratio.}
+			\label{table:ax-pre-ratio}\\\toprule
+			\multicolumn{1}{c|}{\textbf{Instancias}} &
+			\multicolumn{5}{c}{\textbf{GRASP}} &
+			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
+			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{desv(\%)} &\textbf{\#Mejor} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{desv(\%)} & \textbf{\#Mejor} \\ \toprule
+			\endfirsthead
+			%
+			\multicolumn{11}{c}
+			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+			\toprule 
+			\multicolumn{1}{c|}{\textbf{Instancias}} &
+			\multicolumn{5}{c}{\textbf{GRASP}} &
+			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
+			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{desv(\%)} &\textbf{\#Mejor} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{desv(\%)} & \textbf{\#Mejor} \\ \toprule
+			\endhead
+			\midrule \multicolumn{11}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+			\endfoot
+			\midrule
+			\multicolumn{11}{r}{{Concluido}} \\ \bottomrule
+			\endlastfoot
+	}},
+	end table=\end{longtable},
+	col sep=semicolon,
+	string type,
+	display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+	display columns/1/.style={column type={S}},
+	display columns/2/.style={column type={c}},
+	display columns/3/.style={column type={S}},
+	display columns/4/.style={column type={S}},
+	display columns/5/.style={column type={c}},
+	display columns/6/.style={column type={S}},
+	display columns/7/.style={column type={S}},
+	display columns/8/.style={column type={S}},
+	display columns/9/.style={column type={S}},
+	display columns/10/.style={column type={c}},
+	]{Results/pre-ratio-fin.csv}
+\end{scriptsize}
 
-{\small\verb!\hypersetup{allcolors=.}!}, or even better: 
+\section{Resultados del experimento final}
+\label{anex:tabla_final} % For referencing this appendix elsewhere, use \ref{AppendixA}
 
-{\small\verb!\hypersetup{hidelinks}!}.
+En la tabla \ref{table:ax-exp-final} se muestran los resultados tras analizar todas las instancias durante la experimentación final, donde:
+\begin{itemize}
+	\item $f$: Indica el valor de la función objetivo calculado.
+	\item c: Indica la cardinalidad del clique encontrado.
+	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
+	\item desv(\#): Indica la variación respecto al valor de la función objetivo en la que se ha basado este trabajo.
+	\item \#Mejor: Indica si la solución obtenida mediante el algoritmo es mejor o no que la del trabajo anterior.
+\end{itemize}
 
-\noindent If you want to have obvious links in the PDF but not the printed text, use:
+\begin{footnotesize}
+	\pgfplotstabletypeset[
+	empty header,
+	begin table=\begin{longtable},
+		every first row/.append style={before row={%
+				\caption{Resultados del experimento final.}
+				\label{table:ax-exp-final}\\\toprule
+				\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{desv(\%)} &\textbf{\#Mejor} \\ \toprule    
+				\endfirsthead
+				\multicolumn{6}{c}%
+				{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
+				\toprule 
+				\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{desv(\%)} &\textbf{\#Mejor} \\ \toprule    
+				\endhead
+				\midrule \multicolumn{6}{r}{{Continúa en la siguiente página}} \\ \bottomrule
+				\endfoot
+				\midrule
+				\multicolumn{6}{r}{{Concluido}} \\ \bottomrule
+				\endlastfoot
+		}},
+		end table=\end{longtable},
+	col sep=semicolon,
+	string type,
+	display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
+	display columns/1/.style={column type={S}},
+	display columns/3/.style={column type={S}},
+	display columns/4/.style={column type={S}},
+	]{Results/tabla-final.csv}
+\end{footnotesize}
 
-{\small\verb!\hypersetup{colorlinks=false}!}.
+%-------------------------------------------------------------------------------

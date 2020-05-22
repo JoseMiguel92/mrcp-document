@@ -9,7 +9,7 @@
 En este capítulo se exponen los diferentes recursos, tanto hardware como software, para la realización de este trabajo fin de grado y cómo, a partir de estos, se han obtenido los resultados para su posterior análisis.
 
 \section{Recursos utilizados}
-A continuación se detallará la máquina y software empleados para el desarrollo del código, así como las instancias utilizadas para comprobar la calidad del algoritmo .
+A continuación, se detallará la máquina y software empleados para el desarrollo del código, así como las instancias utilizadas para comprobar la calidad del algoritmo.
 
 \subsection{Descripción de la máquina utilizada}
 \label{sec:maquina}
@@ -25,16 +25,16 @@ El desarrollo del código se ha realizado mediante el lenguaje de programación 
 
 \subsection{Instancias utilizadas}
 \label{sec:Instancias-utilizadas}
-Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado, han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado. Estas hacen referencia a conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos, como precios del mercado de valores o turbinas de viento.
+Las instancias con las que se ha contado para comprobar la eficiencia del algoritmo desarrollado han sido proporcionadas por los estudios previos en los que se basa y compara este trabajo final de grado. Estas hacen referencia a conjuntos de grafos, tanto generados de manera aleatoria como obtenidos de diferentes fuentes de datos, como precios del mercado de valores o turbinas de viento.
 
-A continuación se detallan los diferentes conjuntos en los que se dividen las instancias:
+A continuación, se detallan los diferentes conjuntos en los que se dividen las instancias:
 
 \begin{itemize}
 	
 	\item \textbf{Conjuntos de tipo A y B:} Estos conjuntos son instancias de grafos generadas mediante una distribución de probabilidad uniforme, variando su número de nodos entre 100 y 500, la densidad de estos grafos oscila entre el 45,78 \% y el 53,64 \%.
 	\item  \textbf{Conjunto de tipo C:} Los datos pertenecientes a las instancias de este tipo hacen referencia a datos de los precios del mercado de valores.
-	\item  \textbf{Conjunto de tipo D:} Las instancias de este conjunto son datos para la construcción de turbinas de viento, donde cada nodo representa una localización de estas turbinas y sus pesos son la media de la velocidad del viento y el coste de contrucción de una turbina en ese punto.
-	\item  \textbf{Conjunto de tipo E:} Estas instancias están extraídas del segundo y décimo DIMACS Implementation Challenge\footnote{http://dimacs.rutgers.edu/programs/challenge/}, donde cada nodo tiene un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 2}$. Adicionalmente se ha añadido un nodo más a cada instancia de este conjunto, el cual está conectado al resto de nodos de la misma, con un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 1}$, donde i es el número del nodo dentro de esa instancia.
+	\item  \textbf{Conjunto de tipo D:} Las instancias de este conjunto son datos para la construcción de turbinas de viento, donde cada nodo representa una localización de estas turbinas y sus pesos son la media de la velocidad del viento y el coste de construcción de una turbina en ese punto.
+	\item  \textbf{Conjunto de tipo E:} Estas instancias están extraídas del segundo y décimo DIMACS Implementation Challenge\footnote{http://dimacs.rutgers.edu/programs/challenge/}, donde cada nodo tiene un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 2}$. Adicionalmente se ha añadido un nodo más a cada instancia de este conjunto, el cual está conectado al resto de nodos de esta, con un peso $\mathrm{p_{i} = 1}$ y un peso $\mathrm{q_{i} = 1}$, donde i es el número del nodo dentro de esa instancia.
 	\item  \textbf{Conjunto de tipo F:} Estas instancias son las mismas que en el conjunto E pero en este caso los pesos de cada nodo son $\mathrm{p_{i} = i}$ y $\mathrm{q_{i} = |V| - i + 1}$, donde i es el número del nodo dentro de esa instancia.
 	
 	
@@ -49,111 +49,50 @@ En esta sección se muestran los resultados obtenidos tras el procesamiento de l
 En esta fase ha sido seleccionado un subconjunto de 22 instancias del problema, con el fin de estudiar la calidad del algoritmo y comprobar los resultados obtenidos mediante distintos valores para $\alpha$ en varias iteraciones, estas se han elegido de todos los conjuntos para ampliar el rango de las pruebas. El número de nodos en estas instancias varia desde los 30 hasta los 1000 nodos, con densidades del 1 al 50 por ciento aproximadamente.
 
 A esta selección de instancias se les ha aplicado los dos constructivos desarrollados, descritos en la sección \ref{sec:implementacion}, y a su vez se han aplicado los valores de $\alpha$ $\epsilon$ \{0.25, 0.5, 0.75\} y adicionalmente un valor de $\alpha$ aleatorio.
-Este experimento se ha realizado procesando cada instancia 100 veces, que unido a lo anteriormente descrito, hace un total de 800 iteraciones por fichero.
+Este experimento se ha realizado procesando cada instancia 100 veces, que, unido a lo anteriormente descrito, hace un total de 800 iteraciones por fichero.
 
-Durante los experimentos preliminares se han recopilado los datos mostrados en la tabla \ref{table:pre-ady} para el constructivo por número de adyacentes y la tabla \ref{table:pre-ratio} para el constructivo por el valor del ratio. Las tablas están divididas en el uso del algoritmo \gls{GRASP} y su posterior mejora mediante la búsqueda local y donde:
+En las tablas \ref{tab:pre-ady} y \ref{tab:pre-ratio} se muestran los datos resumidos que se han recopilado durante todo el procesado preliminar. Estos han sido comparados con el análisis previo mediante el algoritmo MS-VNS, donde:
 
 \begin{itemize}
-	\item $f$: Indica el valor de la función objetivo calculado.
-	\item c: Indica la cardinalidad del clique encontrado.
-	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
-	\item $\alpha$ : Indica el valor de $\alpha$ con el que se ha obtenido esa solución.
-	\item Mejor: Indica si la solución obtenida mediante este constructivo es mejor respecto al otro.
+	\item $f$: Indica el valor medio de la función objetivo.
+	\item t(sec): Indica el tiempo medio empleado en el procesado de las instancias.
+	\item Desv.(\%): Indica el porcentaje de desviación de la función objetivo respecto al análisis previo.
+	\item \# Mejor: Indica el número de veces que ese constructivo ha sido mejor que el análisis previo.
 \end{itemize}
 
-\begin{scriptsize}
-\pgfplotstabletypeset[
-multicolumn names,
-empty header,
-begin table=\begin{longtable},
-	every first row/.append style={before row={
-			\caption{Resultados de los experimentos preliminares con constructivo adyacentes.}
-			\label{table:pre-ady}\\\toprule
-			\multicolumn{1}{c|}{\textbf{Instancias}} &
-			\multicolumn{4}{c}{\textbf{GRASP}} &
-			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
-			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \textbf{Mejor} \\ \toprule    
-			\endfirsthead
-			%
-			\multicolumn{10}{c}
-			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
-			\toprule 
-			\multicolumn{1}{c|}{\textbf{Instancias}} &
-			\multicolumn{4}{c}{\textbf{GRASP}} &
-			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
-			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \textbf{Mejor} \\ \toprule    
-			\endhead
-			\midrule \multicolumn{10}{r}{{Continúa en la siguiente página}} \\ \bottomrule
-			\endfoot
-			\midrule
-			\multicolumn{10}{r}{{Concluido}} \\ \bottomrule
-			\endlastfoot
-	}},
-	end table=\end{longtable},
-col sep=semicolon,
-string type,
-display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
-display columns/1/.style={column type={S}},
-display columns/2/.style={column type={c}},
-display columns/3/.style={column type={S}},
-display columns/4/.style={column type={S}},
-display columns/5/.style={column type={S}},
-display columns/6/.style={column type={S}},
-display columns/7/.style={column type={S}},
-display columns/8/.style={column type={S}},
-display columns/9/.style={column type={c}},
-]{Results/pre-ady-fin.csv}
+Por un lado, la tabla \ref{tab:pre-ady} muestra los datos para el constructivo por adyacentes, se percibe que el valor medio de $f$ se acerca mucho al que se obtuvo en el análisis previo del problema, esto indica que el algoritmo cumple cierta calidad en la obtención de una solución factible.
 
-\pgfplotstabletypeset[
-multicolumn names,
-empty header,
-begin table=\begin{longtable},
-	every first row/.append style={before row={
-			\caption{Resultados de los experimentos preliminares con constructivo ratio.}
-			\label{table:pre-ratio}\\\toprule
-			\multicolumn{1}{c|}{\textbf{Instancias}} &
-			\multicolumn{4}{c}{\textbf{GRASP}} &
-			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
-			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \textbf{Mejor} \\ \toprule    
-			\endfirsthead
-			%
-			\multicolumn{10}{c}
-			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
-			\toprule 
-			\multicolumn{1}{c|}{\textbf{Instancias}} &
-			\multicolumn{4}{c}{\textbf{GRASP}} &
-			\multicolumn{5}{|c}{\textbf{GRASP y búsqueda local}} \\
-			\multicolumn{1}{c|}{} & \multicolumn{1}{c}{\textbf{$f$}} & \textbf{c} &\textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \multicolumn{1}{|c}{\textbf{$f$}} & \textbf{c} & \textbf{t (sec)} & \textbf{\hspace{0.5cm}$\alpha$} & \textbf{Mejor} \\ \toprule    
-			\endhead
-			\midrule \multicolumn{10}{r}{{Continúa en la siguiente página}} \\ \bottomrule
-			\endfoot
-			\midrule
-			\endlastfoot
-	}},
-	end table=\end{longtable},
-col sep=semicolon,
-string type,
-display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
-display columns/1/.style={column type={S}},
-display columns/2/.style={column type={c}},
-display columns/3/.style={column type={S}},
-display columns/4/.style={column type={S}},
-display columns/5/.style={column type={S}},
-display columns/6/.style={column type={S}},
-display columns/7/.style={column type={S}},
-display columns/8/.style={column type={S}},
-display columns/9/.style={column type={c}},
-]{Results/pre-ratio-fin.csv}
-\end{scriptsize}
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		& \textbf{$f$} & \textbf{t (sec)} & \textbf{Desv.(\%)} & \textbf{\# Mejor} \\ \hline
+		\textbf{MS-VNS}     & 8789,20    & 31,42            & 0,21             & 21                \\
+		\textbf{GRASP}      & 8074,21    & 4,31             & 48,16            & 1                 \\
+		\textbf{GRASP + BL} & 8202,39    & 5,42             & 45,19            & 1                 \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen constructivo de adyacentes.}
+	\label{tab:pre-ady}
+\end{table}
 
-En estas tablas se encuentran los mejores resultados tras todas las iteraciones de ambos constructivos y la posterior mejora del algoritmo con la búsqueda local.
+Por otro lado, en la tabla \ref{tab:pre-ratio}, se exponen los resultados para el constructivo por ratio, que en este caso consigue alcanzar mejor promedio para $f$. Cabe añadir que incluir la mejora aumenta en ambos casos el tiempo de cómputo. Sin embargo, también aumenta significativamente el valor de la función objetivo, por lo que se añadirá a la experimentación final.\\
 
-Aunque en algunos casos, añadir al algoritmo la mejora mediante la búsqueda local no parece aumentar la calidad de la solución, en la mayoría de casos si, por lo que finalmente se añadirá para la experimentación final. 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		& \textbf{f} & \textbf{t (sec)} & \textbf{Desv (\%)} & \textbf{\# Mejor} \\ \hline
+		\textbf{MS-VNS}     & 8789,20    & 31,42            & 0,00             & 22                \\
+		\textbf{GRASP}      & 8139,99    & 5,00             & 47,79            & 0                 \\
+		\textbf{GRASP + BL} & 8202,43    & 5,89             & 45,35            & 0                 \\ \hline
+	\end{tabular}
+	\caption{Tabla resumen constructivo de ratio.}
+	\label{tab:pre-ratio}
+\end{table}
 
-Además, tras estas iteraciones se ha comprobado que el constructivo mediante el cálculo por ratio ha obtenido mejores resultados en relación ratio-cardinalidad, alcanzado 13 soluciones mejores respecto a las 9 soluciones mejores obtenidos mediante el constructivo por adyacentes. 
+Aunque que el constructivo mediante el ratio no alcance un valor que supere la función objetivo, se han obtenido de media mejores resultados en relación ratio-cardinalidad, con una desviación menor respecto al algoritmo MS-VNS. Por lo tanto, el constructivo basado en el ratio permite obtener valores para la función objetivo mayores y cliques con mayor número de nodo. A esto hay que añadir que el valor de $\alpha$ con el que se han obtenido mejores resultados ha sido 0.75, llegando a 16 soluciones mejores de las 22 instancias procesadas en este caso respecto del constructivo por adyacentes.
 
-Por lo tanto el constructivo basado en el ratio, permite obtener valores para la función objetivo mayores y cliques con mayor número de nodos en tiempos de computo razonables. A esto hay que añadir que el valor de $\alpha$ con el que se han obtenido mejores resultados ha sido 0.75, llegando a 16 soluciones mejores de las 22 instancias procesadas en este caso.
-
+Todos los datos que se han recopilado durante estos experimentos preliminares se pueden encontrar en los anexos \ref{table:ax-pre-ady} y \ref{table:ax-pre-ratio}. En estas tablas se encuentran los mejores resultados tras todas las iteraciones de ambos constructivos y la posterior mejora del algoritmo con la búsqueda local.
 
 \subsection{Experimento final}
 
@@ -166,56 +105,35 @@ En esta sección se han recopilado todos los datos obtenidos en las pruebas prel
 	\item 100 iteraciones por instancia.
 \end{itemize}
 
-Con los que tras el procesado de todas las instancias, se han obtenido los datos mostrados en la tabla \ref{table:exp-final}, donde:
-\begin{itemize}
-	\item $f$: Indica el valor de la función objetivo calculado.
-	\item c: Indica la cardinalidad del clique encontrado.
-	\item t: Indica el tiempo total empleado en encontrar la solución en segundos.
-	\item $\Delta f (\%)$: Indica la variación respecto al valor de la función objetivo en la que se ha basado este trabajo.
-	\item Mejor: Indica si la solución obtenida mediante el algoritmo es mejor o no que la del trabajo anterior.
-\end{itemize}
-
 Los datos recopilados durante el experimento final han sido comparados con los obtenidos previamente en el trabajo realizado por Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283}, los cuales se pueden observar en la tabla 2 del mismo. 
 
-\begin{footnotesize}
-\pgfplotstabletypeset[
-empty header,
-begin table=\begin{longtable},
-	every first row/.append style={before row={%
-			\caption{Resultados del experimento final.}
-			\label{table:exp-final}\\\toprule
-			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\Delta f(\%)$} &\textbf{$Mejor$} \\ \toprule    
-			\endfirsthead
-			\multicolumn{6}{c}%
-			{{\bfseries Tabla \thetable\ Continuación de la página anterior}} \\
-			\toprule 
-			\textbf{Instancias} &\textbf{$f$} &\textbf{c} &\textbf{t (sec)} &\textbf{$\Delta f(\%)$} &\textbf{$Mejor$} \\ \toprule    
-			\endhead
-			\midrule \multicolumn{6}{r}{{Continúa en la siguiente página}} \\ \bottomrule
-			\endfoot
-			\midrule
-			\endlastfoot
-	}},
-	end table=\end{longtable},
-col sep=semicolon,
-string type,
-display columns/0/.style={postproc cell content/.append style={@cell content={\textbf{##1}}}},
-display columns/1/.style={column type={S}},
-display columns/3/.style={column type={S}},
-]{Results/tabla-final.csv}
-\end{footnotesize}
+En la tabla \ref{tab:final-corregida} se muestran los resultados resumidos tras el procesado de todas las instancias, se puede apreciar que el valor promedio de $f$ es muy cercano al valor promedio que se obtuvo en el análisis de referencia.
 
-Como indica el porcentaje de variación de la función objetivo, $\Delta f (\%)$, se puede observar que en todas las instancias se han obtenido valores, en algunos casos, muy cercanos al trabajo anterior, ya que son valores cercanos a 0, y por lo tanto el algoritmo cumple cierta calidad. Aún así, sólo en 10 casos se han obtenido valores mejores.
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		\textbf{}           & \textbf{f} & \textbf{t(sec)} & \textbf{Desv.(\%)} & \textbf{\# Mejor} \\ \hline
+		\textbf{MS-VNS}     & 1700,88    & 23,46           & 5,28               & 102               \\
+		\textbf{GRASP + BL} & 1671,81    & 6,09            & 37,73              & 7\\ \hline             
+	\end{tabular}
+	\caption{Tabla comparativa corregida de la experimentación final.}
+	\label{tab:final-corregida}
+\end{table}
 
-También cabe destacar que los resultados obtenidos se han realizado en un tiempo de computo significativamente bajo, por lo que aunque no supere al trabajo de referencia, si mejora los resultados obtenidos mediante la linealización y el método de Newton con el solucionador Gurobi\footnote{https://www.gurobi.com/es/} con los que se compara dicho trabajo.
+Es importante indicar que en esta tabla no se han añadido los resultados que en el estudio previo de Dominik Goeke, Mahdi Moeini y David Poganiuch no incluyeron o no procesaron. Si se añaden estos valores, se obtiene la tabla \ref{tab:final-completa}, donde se puede observar que el valor medio de $f$ es mayor que en el estudio previo. También cabe añadir que este algoritmo ha obtenido los resultados en un tiempo medio muy bajo respecto del estudio previo. Además, aplicar este algoritmo y posterior mejora a supuesto la menor desviación, respecto del algoritmo MS-VNS, de todas las experimentaciones.
 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{lllll}
+		\hline
+		\textbf{}           & \textbf{f} & \textbf{t(sec)} & \textbf{Desv.(\%)} & \textbf{\# Mejor} \\ \hline
+		\textbf{MS-VNS}     & 1700,88    & 23,46           & 5,28               & 102               \\
+		\textbf{GRASP + BL} & 2384,61    & 6,84            & 35,75              & 13 \\ \hline               
+	\end{tabular}
+	\caption{Tabla comparativa de la experimentación final.}
+	\label{tab:final-completa}
+\end{table}
+
+En la tabla \ref{table:ax-exp-final} que se anexa se pueden encontrar los datos tras el procesado de todas las instancias durante el experimento final.
 %-------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-

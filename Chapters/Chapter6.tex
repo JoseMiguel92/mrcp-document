@@ -6,7 +6,7 @@
 
 %-------------------------------------------------------------------------------
 
-En este capítulo se describen las conclusiones finales alcanzadas tras el desarrollo del proyecto, así como las lecciones aprendidas durante el mismo.
+En este capítulo se describen las conclusiones alcanzadas tras el desarrollo del proyecto, así como las lecciones aprendidas durante el mismo.
 
 \section{Consecución de los objetivos}
 
@@ -47,7 +47,7 @@ El proceso de realización de este trabajo fin de grado ha supuesto la superaci�
 \section{Líneas de desarrollo futuras}
 En cuanto a las líneas de desarrollo futuras para este problema se describen algunas ideas como:
 
-En primer lugar, un caso que ofrece un considerable aumento en el rendimiento del código, es la utilización de Cython\footnote{https://cython.org/} mediante pequeñas modificaciones en el código para ajustarlo a su lenguaje propio. Este compilador optimizado permite aumentar el  rendimiento de las funciones escritas en Python. Algunas de sus características son la unificación de la legibilidad del código escrito en Python con el rendimiento de C, y la interacción eficiente con grandes conjuntos de datos mediante NumPy\footnote{https://numpy.org/}.
+En primer lugar, una opción que ofrece un considerable aumento en el rendimiento del código es la utilización de Cython\footnote{https://cython.org/} mediante pequeñas modificaciones en el código para ajustarlo a su lenguaje propio. Este compilador optimizado permite aumentar el  rendimiento de las funciones escritas en Python. Algunas de sus características son la unificación de la legibilidad del código escrito en Python con el rendimiento de C, y la interacción eficiente con grandes conjuntos de datos mediante NumPy\footnote{https://numpy.org/}.
 
 Otra opción podría ser la implementación del procesado paralelo aprovechando el módulo $concurrent.futures$ que ofrece Python, este hace uso del módulo multiprocessing, por lo tanto no se ve afectado por el \gls{GIL}\footnote{https://docs.python.org/3/glossary.html?highlight=gil\#term-global-interpreter-lock} a diferencia del módulo multithreading, y permite crear un conjunto de procesos, mediante la función ProcessPoolExecutor, para ejecutar llamadas asíncronas. 
 

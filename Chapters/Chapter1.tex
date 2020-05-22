@@ -20,18 +20,18 @@ En este capítulo se presenta la motivación del problema, los conceptos previos
 \section{Estructura de la memoria}
 La memoria de este trabajo final de grado se estructura de la siguiente manera:
 \begin{itemize}
-	\item Capítulo 1, en este capítulo se introduce el tema a tratar, describiendo el problema y el estado del arte del mismo, así como conceptos previos a tener en cuenta.
+	\item Capítulo 1, en este capítulo se introduce el tema a tratar, describiendo el problema y el estado del arte de este, así como conceptos previos relacionados.
 	\item Capítulo 2, en este capítulo se muestran los objetivos que se esperan alcanzar con este trabajo final de grado.
 	\item Capítulo 3, en este capítulo se describe de manera algorítmica la metaheurística empleada para abordar el problema tratado.
 	\item Capítulo 4, en este capítulo se explica el desarrollo de las funciones para obtener una solución al problema.
-	\item Capítulo 5, en este capítulo se exponen los resultados recopilados durante el procesamiento del problema, así como el análisis de los mismos.
-	\item Capítulo 6, en este capítulo se muestran las conclusiones finales obtenidas durante todo este trabajo final de grado.
+	\item Capítulo 5, en este capítulo se exponen los resultados recopilados durante el procesamiento del problema, así como el análisis de estos.
+	\item Capítulo 6, en este capítulo se muestran las conclusiones obtenidas durante todo este trabajo final de grado.
 \end{itemize}
 
 \section{Motivación del problema}
 
 En la actualidad, los datos se han convertido en una pieza fundamental en la vida cotidiana de las personas. Tanto su obtención como su posterior tratamiento son grandes retos que deben ser estudiados y, por supuesto, realizar esto de una manera eficiente y en el menor tiempo posible, es un reto aún mayor. A partir de esto se obtiene el término grafo, el cual es fundamental en este ámbito y que se define como la relación entre nodos o vértices mediante uniones llamadas aristas, y esto, es lo realmente interesante a estudiar, las relaciones existentes entre los distintos nodos.\newline
-Existen muchos casos en los que se puede realizar la obtención y tratamiento de estos datos, como por ejemplo, la red social Facebook\footnote{https://es-es.facebook.com/}, que como se observa en la figura \ref{fig:facebook-graph} define su grafo como las relaciones entre las personas y aficiones que les unen. Además ofrece una \gls{API} \footnote{Conjunto de métodos que forman parte de una librería y que a modo de capa de abstracción son publicados para que puedan ser usados en otros desarrollos software.} con la que poder interactuar con los datos que son recopilados en ella \cite{api-graph}.
+Existen muchos casos en los que se puede realizar la obtención y tratamiento de estos datos, como, por ejemplo, la red social Facebook\footnote{https://es-es.facebook.com/}, que como se observa en la figura \ref{fig:facebook-graph} define su grafo como las relaciones entre las personas y aficiones que les unen. Además, ofrece una \gls{API} \footnote{Conjunto de métodos que forman parte de una librería y que a modo de capa de abstracción son publicados para que puedan ser usados en otros desarrollos software.} con la que poder interactuar con los datos que son recopilados en ella \cite{api-graph}.
 
  \begin{figure}[H]
 	\centering
@@ -40,7 +40,7 @@ Existen muchos casos en los que se puede realizar la obtención y tratamiento de
 	\label{fig:facebook-graph}
 \end{figure}
 
-Por otro lado, también muy cercano a la vida cotidiana de las personas, se encuentran las redes de telecomunicaciones, figura \ref{fig:teleco-graph}, que interconectan todos los aparatos eletrónicos, que de una manera u otra se comunicación entre ellos, y las redes de metro, figura \ref{fig:metro-graph}, que permiten el movimiento de las personas en la ciudad y pueden ser estudiadas por uso, localización, etcétera.
+Por otro lado, también muy cercano a la vida cotidiana de las personas, se encuentran las redes de telecomunicaciones, figura \ref{fig:teleco-graph}, que interconectan todos los aparatos electrónicos, que de una manera u otra se comunicación entre ellos, y las redes de metro, figura \ref{fig:metro-graph}, que permiten el movimiento de las personas en la ciudad y pueden ser estudiadas por uso, localización, etcétera.
 
 \begin{figure}[H]
 	\begin{minipage}[b]{0.5\linewidth}
@@ -49,7 +49,6 @@ Por otro lado, también muy cercano a la vida cotidiana de las personas, se encu
 			\caption{Grafo de telecomunicaciones.}
 			\label{fig:teleco-graph}
 	\end{minipage}
-	\hspace{0.5cm}
 	\begin{minipage}[b]{0.5\linewidth}
 		\centering
 		\includegraphics[scale=0.8]{Figures/metro-graph.pdf}
@@ -77,13 +76,13 @@ Por todo esto, es muy importante tratar los datos de forma adecuada y responsabl
 Para comprender mejor todas las explicaciones que se van a exponer a lo largo del documento, se describen a continuación los conceptos más importantes.
 
 \subsection{Optimización combinatoria}
-La optimización combinatoria es el área, dentro de las matemáticas aplicadas, que se encarga de maximizar o minimizar una función en un espacio de soluciones, el cuál debe ser finito. Los problemas que pertenecen a este área tienen en común la dificultad de encontrar soluciones factibles, puesto que existen muchas posibles y alguna de estas es óptima.\\
-Algunos casos conocidos son el problema de la mochila\footnote{https://www.sciencedirect.com/topics/computer-science/knapsack-problem} o el problema del vendedor viajero\footnote{https://www.sciencedirect.com/topics/computer-science/travelling-salesman-problem}. Estos problemas tienen un planteamiento sencillo pero son difíciles de solucionar, y mediante ciertos algoritmos, como se explicará en la sección \ref{sec:heu-meta}, se pueden obtener soluciones factibles en tiempos de cómputo reducidos.\\
+La optimización combinatoria es el área, dentro de las matemáticas aplicadas, que se encarga de maximizar o minimizar una función en un espacio de soluciones, el cuál debe ser finito. Los problemas que pertenecen a esta área tienen en común la dificultad de encontrar soluciones factibles, puesto que existen muchas posibles y alguna de estas es óptima.\\
+Algunos casos conocidos son el problema de la mochila\footnote{https://www.sciencedirect.com/topics/computer-science/knapsack-problem} o el problema del vendedor viajero\footnote{https://www.sciencedirect.com/topics/computer-science/travelling-salesman-problem}. Estos problemas tienen un planteamiento sencillo, pero son difíciles de solucionar, y mediante ciertos algoritmos, como se explicará en la sección \ref{sec:heu-meta}, se pueden obtener soluciones factibles en tiempos de cómputo reducidos.\\
 En la actualidad es un campo con un gran crecimiento ya que ``muchos de los problemas de la vida real pueden ser formulados mediante optimización combinatoria'' \cite{opt-comb-rg}.
 
 \subsection{Heurística y Metaheurística}
 \label{sec:heu-meta}
-Se define heurística, según el Diccionario de la Real Academia de la Lengua Española \cite{rae-heuristica}, como ``técnica de la indagación y del descubrimiento'' y ``en algunas ciencias, manera de buscar la solución de un problema mediante métodos no rigurosos, como por tanteo, reglas empíricas, etc.''. Aplicándolo a temas científicos se define como el proceso de creación de medios, estrategias y principios para alcanzar un objetivo eficaz al problema dado \cite{conceptodef-heuristica}. El término heurística fue acuñado por George Polya en su libro ``How to Solve It'' \cite{gpolya-book-1}, más tarde traducido a ``Cómo plantear y resolver problemas'' \cite{gpolya-book-2}.
+Se define heurística, según el Diccionario de la Real Academia de la Lengua Española, como ``técnica de la indagación y del descubrimiento'' y ``en algunas ciencias, manera de buscar la solución de un problema mediante métodos no rigurosos, como por tanteo, reglas empíricas etc.''\cite{rae-heuristica}. Aplicándolo a temas científicos se define como el proceso de creación de medios, estrategias y principios para alcanzar un objetivo eficaz al problema dado \cite{conceptodef-heuristica}. El término heurística fue acuñado por George Polya en su libro ``How to Solve It'' \cite{gpolya-book-1}, más tarde traducido a ``Cómo plantear y resolver problemas'' \cite{gpolya-book-2}.
 
 Añadiendo al término heurística el prefijo ``meta'', procedente del griego que significa ``más allá'' o ``nivel superior'', se puede definir metaheurística como el conjunto de procedimientos heurísticos combinados para obtener una solución a un problema que no tiene un algoritmo heurístico específico o su aplicación es ineficiente \cite{wiki-metaheuristica}. Este término lo acuñó Fred Glover en sus trabajos sobre búsqueda tabú en 1986 \cite{fred-glover}.
 
@@ -142,17 +141,17 @@ Existen una gran variedad de algoritmo metaheurísticos que se pueden clasificar
 %	}
 %\end{figure}
 
-Dos conceptos a tener en cuenta en un algoritmo metaheurístico son la intensificación, que indica la exhaustividad con la que el algoritmo explora una región, y la diversificación, que indica como el algoritmo es capaz de explorar nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
+Dos conceptos importantes en un algoritmo metaheurístico son la intensificación, que indica la exhaustividad con la que el algoritmo explora una región, y la diversificación, que indica como el algoritmo es capaz de explorar nuevas regiones del espacio de soluciones \cite{libro-metaheuristicas}.
 
 \subsection{Clique}
 \label{sec-clique}
-El término clique se puede asemejar a un grupo de personas, las cuales serían los nodos o vértices de un grafo, a las que les unen los mismos intereses por algún tema en concreto, estas uniones serían las aristas que unen los nodos del grafo \cite{LUCE:1949}.
+El término clique define a un grupo de personas que tienen intereses comunes. Según el Cambridge Dictionary un clique es ``un grupo pequeño de personas que invierten su tiempo juntos y excluyen al resto de personas que no forman parte de este''  \cite{cliqueCambridge}. Asemejando esta definición con un grafo, se tienen los nodos que serían las personas que forman el grupo y las aristas del grafo, que corresponderían con los intereses comunes entre esas personas. \cite{LUCE:1949}.
 
 En teoría de grafos, un clique, es el subgrafo perteneciente a un grafo, en el cuál todos sus nodos o vértices son adyacentes entre sí, es decir, todo par de nodos o vértices están conectados mediante una arista. En términos matemáticos se describe como, dado un grafo $G = (V, E)$ donde $V$ indica el conjunto de vértices del grafo y $E$ indica el conjunto de aristas del grafo \cite{web-clique}, un clique $C$ se define como:
 \[
 C \subseteq V(G) ~ \wedge ~ u, v ~ \epsilon ~ C  \wedge  u  \neq v \Rightarrow u, v ~ \epsilon ~ E(G)
 \]
-Mostrandolo de una manera gráfica se indica en la figura  \ref{fig:graph} un grafo compuesto por el conjunto de nodos $V=\{A, B, C, D, E\}$.
+Mostrándolo de una manera gráfica se indica en la figura  \ref{fig:graph} un grafo compuesto por el conjunto de nodos $V=\{A, B, C, D, E\}$.
 
 \begin{figure}[H]
 	\centering
@@ -203,7 +202,7 @@ En este  caso, se obtiene $\omega(G) = 4$, donde $\omega$ denota el número de v
 \label{intro-problema}
 Como se introdujo en la sección \ref{sec-clique}, el concepto clique es fundamental y muy estudiado, en concreto, la búsqueda del clique máximo dentro de un grafo. A este problema se le conoce como el problema del clique máximo o \gls{MCP} (Maximum clique problem), y es catalogado como un NP-completo.
 
-En teoría de complejidad computacional, a los problemas denominados como NP, acrónimo de non-deterministic polynomial time o tiempo polinominal no determinista, se les conoce como el conjunto de problemas que se pueden resolver en un tiempo polinómico por una máquina de Turing no determinista. Esta clasificación, como se muestra en la figura \ref{fig:problemas-np}, también contiene todos los problemas de tipo P y de tipo NP-completos, como es el caso del problema del clique máximo.
+En teoría de complejidad computacional, a los problemas denominados como NP, acrónimo de non-deterministic polynomial time o tiempo polinomial no determinista, se les conoce como el conjunto de problemas que se pueden resolver en un tiempo polinómico por una máquina de Turing no determinista. Esta clasificación, como se muestra en la figura \ref{fig:problemas-np}, también contiene todos los problemas de tipo P y de tipo NP-completos, como es el caso del problema del clique máximo.
 
 \begin{figure}[H]
 	\centering
@@ -220,8 +219,8 @@ Otra variante, es la tratada en este trabajo y que se corresponde con el problem
 donde $p$ y $q$ son pesos no negativos asociados a cada vértice $i$, y $x$ se determina como:
 \[
 \diagram{$x_i=$}{
-	1 : si el vértice $i$ forma parte de la solución. \\
-	0 : en otro caso
+	1: si el vértice $i$ forma parte de la solución. \\
+	0: en otro caso
 }
 \]
 
@@ -232,11 +231,11 @@ Como se expone en el modelo de ecuación \ref{eq:mrcp-max}, partiendo de un graf
 maximizar && f = \frac{\sum_{i=1}^{n}p_ix_i}{\sum_{i=1}^{n}q_ix_i} \\
 \nonumber sujeto ~ a: \\
 \label{eq:mrcp-rest1}
-&& x_i + x_j \leqslant 1 : \forall (v_i, v_j) \notin E,~i \neq j,\\
+&& x_i + x_j \leqslant 1: \forall (v_i, v_j) \notin E,~i \neq j,\\
 \label{eq:mrcp-rest2}
-&& \sum_{i=1}^{n}(a_ij)x_i ~ \geqslant 1 : \forall v_j \in V, \\
+&& \sum_{i=1}^{n}(a_ij)x_i ~ \geqslant 1: \forall v_j \in V, \\
 \label{eq:mrcp-rest3}
-&& x_i \in {0,~1} : \forall v_i \in V.
+&& x_i \in {0,~1}: \forall v_i \in V.
 \end{eqnarray}
 
 El problema del clique de ratio máximo ha sido catalogado como un problema NP-difícil o NP-complejo como se indica en la figura \ref{fig:np-dificil}, por lo que no es posible obtener una solución factible por métodos heurísticos o exactos.
