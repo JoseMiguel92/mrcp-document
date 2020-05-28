@@ -15,7 +15,7 @@
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 
 %-------------------------------------------------------------------------------
-En este capítulo se presenta la motivación del problema, los conceptos previos que ayudarán al lector a entender mejor el desarrollo, siguiendo con la definición del problema, y por último, se muestra una revisión del estado del arte relacionado con este problema.
+En este capítulo se presenta la motivación del problema, los conceptos previos que ayudarán al lector a entender mejor el desarrollo, siguiendo con la definición del problema y, por último, se muestra una revisión del estado del arte relacionado con este.
 
 \section{Estructura de la memoria}
 La memoria de este trabajo final de grado se estructura de la siguiente manera:
@@ -57,7 +57,7 @@ Por otro lado, también muy cercano a la vida cotidiana de las personas, se encu
 	\end{minipage}
 \end{figure}
 
-Y por último, otra representación de grafo, es el de las moléculas y los enlaces químicos \cite{grafo-molecula}, que se pueden representar como en la figura \ref{fig:molecula-graph}.
+Y, por último, otra representación de grafo es el de las moléculas y los enlaces químicos \cite{grafo-molecula}, que se pueden representar como en la figura \ref{fig:molecula-graph}.
 
  \begin{figure}[H]
 	\centering
@@ -86,7 +86,7 @@ Se define heurística, según el Diccionario de la Real Academia de la Lengua Es
 
 Añadiendo al término heurística el prefijo ``meta'', procedente del griego que significa ``más allá'' o ``nivel superior'', se puede definir metaheurística como el conjunto de procedimientos heurísticos combinados para obtener una solución a un problema que no tiene un algoritmo heurístico específico o su aplicación es ineficiente \cite{wiki-metaheuristica}. Este término lo acuñó Fred Glover en sus trabajos sobre búsqueda tabú en 1986 \cite{fred-glover}.
 
-Existen una gran variedad de algoritmo metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una posible clasificación.
+Existen una gran variedad de algoritmos metaheurísticos que se pueden clasificar de diferentes maneras según el enfoque, en la figura \ref{fig:clasif-metahs} se muestra una posible clasificación.
 
 \begin{figure}[H]
 	\centering
@@ -211,8 +211,8 @@ En teoría de complejidad computacional, a los problemas denominados como NP, ac
 	\label{fig:problemas-np}
 \end{figure}
 
-Una variante de este problema es el llamado problema del clique de peso máximo o \gls{MWCP} (Maximum Weight Clique Problem), en el que se asocia un peso no negativo a cada vértice, y cuyo objetivo es encontrar un clique con el máximo valor en la suma de los pesos de sus vértices. Este problema esta estrechamente ligado al problema tratado en este trabajo.\\
-Otra variante, es la tratada en este trabajo y que se corresponde con el problema del clique de ratio máximo o \gls{MRCP} (Maximum Ratio Clique Problem) que trata de encontrar el subgrafo completo de ratio máximo. Este ratio se define como la proporción de la suma de los pesos no negativos asociados a los vértices del grafo como se indica a continuación:
+Una variante de este problema es el llamado problema del clique de peso máximo o \gls{MWCP} (Maximum Weight Clique Problem), en el que se asocia un peso no negativo a cada vértice, y cuyo objetivo es encontrar un clique con el máximo valor en la suma de los pesos de sus vértices.\\
+Otra variante, la tratada en este trabajo, es el problema del clique de ratio máximo o \gls{MRCP} (Maximum Ratio Clique Problem) que trata de encontrar el subgrafo completo de ratio máximo. Este ratio se define como la proporción de la suma de los pesos no negativos asociados a los vértices del grafo como se indica a continuación:
 \begin{equation*}
 \frac{\sum_{i=1}^{n}p_ix_i}{\sum_{i=1}^{n}q_ix_i}
 \end{equation*}
@@ -256,7 +256,7 @@ En el documento desarrollado por Samyukta Sethuraman y Sergiy Butenko \cite{mrcp
 
 En \cite{mrcp-moeni} se trata el problema basándose en el enfoque eficiente que dan las funciones de diferencia de convexos (DC) y sus algoritmos (DCA), que proveen resultados competitivos y a su vez introducen las desigualdades válidas, que ayudan a mejorar el tiempo computacional en la obtención de resultados de calidad al problema.
 
-Cabe destacar entre todos los trabajos el de Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283} el cuál se ha tomado como referencia para realizar este trabajo. En este artículo, los autores parten de un punto de vista multi-arranque \gls{MSM}, añadiendo una búsqueda de vecindario variable \gls{VNS}, lo que permite obtener soluciones de gran calidad con un tiempo de computo menor.
+Cabe destacar entre todos los trabajos el de Dominik Goeke, Mahdi Moeini y David Poganiuch \cite{mrcp-GOEKE2017283} el cual se ha tomado como referencia para realizar este trabajo. En este artículo, los autores parten de un punto de vista multi-arranque \gls{MSM}, añadiendo una búsqueda de vecindario variable \gls{VNS}, lo que permite obtener soluciones de gran calidad con un tiempo de computo menor.
 
 %-------------------------------------------------------------------------------
 

@@ -10,7 +10,7 @@ En este capítulo se describe el desarrollo completo del proyecto, desde el dise
 
 \section{Diseño}
 Para la realización del desarrollo del proyecto se ha optado por seguir un paradigma de programación orientada a objetos y se ha planteado la arquitectura que se muestra en el diagrama de clases de la figura \ref{fig:diagrama-clases}.
-La implementación parte de un documento principal, en este caso se trata de un script ejecutable, grasp\_main.py, que contiene la información inicial y las llamadas a las clases y métodos de estas necesarios para obtener los resultados al problema.
+La implementación parte de un documento principal, en este caso se trata de un script ejecutable, grasp\_main.py, que contiene la información inicial y las llamadas a las clases y métodos de estas, necesarios para obtener los resultados al problema.
 
 A continuación de este parten las clases:
  \begin{itemize}
@@ -82,7 +82,7 @@ Para la fase constructiva del algoritmo, la implementación se apoya en la funci
 
 Una vez se obtiene el listado de candidatos, es procesado mediante la función $get\_rcl$, la cual haciendo uso del valor de $\mu$, calculado como se mostró en el algoritmo \ref{alg:grasp} con el valor de $\alpha$, permite obtener la lista de candidatos restringida denominada en el algoritmo como $RCL$. A partir de este momento el siguiente paso es escoger de manera aleatoria un nodo de esta lista e incluirlo en el conjunto solución, eliminando de la lista $CL$ los nodos que no son adyacentes a este, ya que no formarían una solución factible. Esta operación es realizada hasta que la lista de candidatos esté vacía.
 
-Para mantener el código ordenado se ha implementado la clase GraphUtils, la cuál contiene información necesaria y métodos útiles para el procesado de las instancias, así como la exportación a ficheros de tipo CSV\footnote{Es un tipo de ficheros de texto simple en el que se almacenan datos separados en columnas por comas o por punto y coma, y las filas por salto de línea.} de los resultados obtenidos.
+Para mantener el código ordenado se ha implementado la clase GraphUtils, la cual contiene información necesaria y métodos útiles para el procesado de las instancias, así como la exportación a ficheros de tipo CSV\footnote{Es un tipo de ficheros de texto simple en el que se almacenan datos separados en columnas por comas o por punto y coma, y las filas por salto de línea.} de los resultados obtenidos.
 
 Con el fin de probar las diferentes funciones del proyecto se han escrito casos de prueba mediante la librería de Python unittest\footnote{https://docs.python.org/3/library/unittest.html}.
 
@@ -91,7 +91,7 @@ Para el desarrollo de este proyecto se ha optado por seguir una metodología de 
 
 Estas iteraciones e incrementos de funcionalidad se han realizado durante todo el desarrollo del proyecto, mediante reuniones, con un lapso de aproximadamente 3 o 4 semanas entre ellas, corrigiendo errores de la iteración anterior si los hubiera y aumentando la funcionalidad del producto a entregar, de esta manera se consigue una evolución progresiva y segura de los requerimientos que el proyecto exige.
 
-Para mantener el control y administrar las tareas a realizar, las que se están desarrollando y las que han finalizado, se ha usado el administrador de proyectos Trello\footnote{https://trello.com/es} el cuál mediante tarjetas permite conocer las tareas del proyecto, así como su estado, detalles de esta y añadir nuevas si fuera necesario. En la figura \ref{fig:trello-tarjetas} se muestra un ejemplo de uso del sistema de tarjetas que ofrece la herramienta.
+Para mantener el control y administrar las tareas a realizar, las que se están desarrollando y las que han finalizado, se ha usado el administrador de proyectos Trello\footnote{https://trello.com/es} el cual mediante tarjetas permite conocer las tareas del proyecto, así como su estado, detalles de esta y añadir nuevas si fuera necesario. En la figura \ref{fig:trello-tarjetas} se muestra un ejemplo de uso del sistema de tarjetas que ofrece la herramienta.
 
 \begin{figure}[H]
 	\centering
