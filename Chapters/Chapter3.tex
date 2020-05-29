@@ -126,27 +126,71 @@ Con este valor, se marca el umbral de selección para la lista restringida de ca
 Para esta segunda fase, se ha definido el algoritmo \ref{alg:bl}, el cuál parte de la solución obtenida previamente en la fase constructiva, formada por los nodos que forman un clique.
 
 \begin{algorithm}
+	$ soluciones \gets [] $ \\[0.2cm]
 	$ vecinos \gets \emptyset $ \\[0.2cm] \label{alg:mj:vecVacios}
 	$ vecinos \gets obtenerVecinos(solucion)$ \\[0.2cm] \label{alg:mj:getVecSol}
 	$ vecinosOrdenados \gets ordenarVecinos(vecinos)$ \\[0.2cm] \label{alg:mj:ordVecs}
 	\For{nodo $\epsilon$ vecinosOrdenados}{ \label{alg:mj:for}
-		$ solucion \gets incluirNodo(solucion, nodo) $ \\[0.2cm] \label{alg:mj:addNodoSol}
+		$ solucion\_parcial \gets incluirNodo(solucion, nodo) $ \\[0.2cm] \label{alg:mj:addNodoSol}
 		\If{$ no \hspace{0.1cm} esClique(solucion) $}{ \label{alg:mj:conNoClique}
-			$ solucion \gets excluirNodo(solucion, nodo) $ \\[0.2cm] \label{alg:mj:exNodo}
+			$ solucion\_parcial \gets excluirNodos(solucion, nodo) $ \\[0.2cm] \label{alg:mj:exNodo}
 		}\Else{
-			$ solucion \gets incluirAdyacentes(solucion, nodo) $ \\[0.2cm] \label{alg:mj:addAdys}
+			$ solucion\_parcial \gets incluirAdyacentes(solucion\_parcial, nodo) $ \\[0.2cm] \label{alg:mj:addAdys}
+			$ soluciones \gets incluirSolucion(solucion\_parcial) $
+			 \\[0.2cm] \label{alg:mj:inclSolParc} 
 		}
 	}
+	$ solucion \gets seleccionarMejorSolucion(soluciones) $
+	\\[0.2cm] \label{alg:mj:selMejorSol}
 	\Return solucion \label{alg:mj:rtSol}
 	\caption{Pseudocódigo del algoritmo de búsqueda local.}
 	\label{alg:bl}
 \end{algorithm}
 
-Con esta solución se obtienen en el paso \ref{alg:mj:getVecSol} todos los vecinos de cada nodo. Estos son ordenados de mayor a menor ratio en el paso \ref{alg:mj:ordVecs}. Esta ordenación se realiza con el fin de aumentar las posibilidades de obtener un mejor valor de ratio. Se obtiene el primer nodo del listado y se añade a la solución en el paso \ref{alg:mj:addNodoSol}, comprobando posteriormente si esta solución forma o no un nuevo clique en el paso \ref{alg:mj:conNoClique}. Esta comprobación verifica que todos los nodos son adyacentes entre sí, formando un clique.
+Con esta solución se obtienen en el paso \ref{alg:mj:getVecSol} todos los vecinos de cada nodo. Estos son ordenados de mayor a menor ratio en el paso \ref{alg:mj:ordVecs}.\\
+Siguiendo con el ejemplo de la fase anterior nos quedaría un listado de nodos vecinos. Esta ordenación se realiza con el fin de aumentar las posibilidades de obtener un mejor valor de ratio. 
 
-Si añadir el nodo no formara una solución, en el paso \ref{alg:mj:exNodo} se excluyen todos los nodos que impiden que se forme una solución factible.
-En caso contrario, ese nodo añadido en el paso \ref{alg:mj:addNodoSol} se mantendría y a su vez, en el paso \ref{alg:mj:addAdys}, se añadirían todos sus nodos adyacentes, con el fin de obtener un clique de tamaño máximo, como marca la restricción del problema.
-Finalmente, una vez comprobados todos los nodos se devuelve el listado solución en el paso \ref{alg:mj:rtSol}.
+Se obtiene el primer nodo del listado y se añade a la solución en el paso \ref{alg:mj:addNodoSol}, comprobando posteriormente si esta solución forma o no un nuevo clique en el paso \ref{alg:mj:conNoClique}. Esta comprobación verifica que todos los nodos son adyacentes entre sí, formando un clique.
+
+Si añadir el nodo no formara una solución, en el paso \ref{alg:mj:exNodo} se excluyen todos los nodos que impiden que se forme una solución factible.\\
+En caso contrario, ese nodo añadido en el paso \ref{alg:mj:addNodoSol} se mantendría y a su vez, en el paso \ref{alg:mj:addAdys}, se añadirían todos sus nodos adyacentes, con el fin de obtener un clique de tamaño máximo, como marca la restricción del problema. El criterio de selección de los adyacentes es al igual que en la fase anterior, mediante una función voraz, en este caso por mayor ratio de entre los adyacentes disponibles.
+
+
+Esa solución parcial es añadida al listado soluciones en el paso \ref{alg:mj:inclSolParc}. Tras procesarse todos los nodos, se seleccionará la solución con mayor ratio calculado y será retornada en el paso \ref{alg:mj:rtSol}.
+
+A continuación, al igual que en la fase anterior se muestra un ejemplo del proceso.
+
+Partiendo de una posible solución previa $ S=\{A, B, C, D, E\} $, en la figura \ref{fig:bl:adys} se muestra la lista ordenada por ratio de todos los nodos adyacentes de la solución previa. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=2]{Figures/proc-bl/adys-ord.pdf}
+	\caption{\footnotesize Lista de adyacentes ordenada.}
+	\label{fig:bl:adys}
+\end{figure}
+
+De este listado se selecciona la primera posición correspondiente en este caso con el nodo $A_1$ ya que tiene el mayor ratio y es añadido a la solución parcial $S_{A_1}$.
+
+A continuación se comprueba si esta nueva solución cumple con las restricciones para ser clique. Si no cumple con las restricciones se aplicaría el proceso de exclusión de nodos que evitan que se forme un clique. En la imagen \ref{fig:bl:exc} se muestra el proceso, en el que los nodos sombreados $B$ y $C$ son eliminados de la solución.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.3]{Figures/proc-bl/excluirNodos.pdf}
+	\caption{\footnotesize Exclusión de los nodos que impiden obtener un clique factible.}
+	\label{fig:bl:exc}
+\end{figure}
+
+Una vez se tiene una solución parcial factible, se añaden todos los nodos adyacentes a los de la solución para obtener un clique máximo. En la figura \ref{fig:bl:add-ayd} se muestra el proceso de adición de los adyacentes mediante una función voraz, en este caso el criterio de selección es por el que aporte mayor ratio a esa solución parcial. Como se indicó anteriormente este ratio es calculado con los pesos $p$ y $q$ asociados al nodo en cuestión.
+
+ Esta será añadida al listado de soluciones parciales.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1.3]{Figures/proc-bl/add-adys.pdf}
+	\caption{\footnotesize Adición de adyacentes a la solución parcial.}
+	\label{fig:bl:add-ayd}
+\end{figure}
+
+Este proceso será repetido con todos los nodos de la lista ordenada generada al inicio y finalmente se devolverá la solución que ha obtenido mayor valor de ratio calculado.
 
 %-------------------------------------------------------------------------------
-
